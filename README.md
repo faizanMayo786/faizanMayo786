@@ -5,5 +5,7 @@
 - As I have a background in Software Engineering, I have a great understanding of Software Development Life Cycles, Software architecture and Designs, Data Structures & Algorithms, and Problem Solving.
 
 How to Reach me out:
-Email: faizangame998@gmail.com
-Mobile/Whatsapp Number: +923017053611
+
+- Email: faizangame998@gmail.com
+- Mobile/Whatsapp Number: +923017053611
+- LinkedIn: https://www.linkedin.com/in/faizan-mayo-021a06161/
