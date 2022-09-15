@@ -7,5 +7,5 @@
 How to Reach me out:
 
 - Email: faizangame998@gmail.com
-- Mobile/Whatsapp Number: +923017053611<[https://wa.me/923017053611]>
+- Mobile/Whatsapp Number: [+923017053611](https://wa.me/390000000000?text=Hello,%20how%20are%20you%20doing%20today)
 - LinkedIn: https://www.linkedin.com/in/faizan-mayo-021a06161/
