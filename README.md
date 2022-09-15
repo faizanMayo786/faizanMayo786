@@ -1,13 +1,9 @@
 
-- Email: faizangame998@gmail.com
-- Mobile/Whatsapp Number: [+923017053611](https://wa.me/923017053611?text=Hello,%20how%20are%20you%20doing%20today?)
-- LinkedIn: https://www.linkedin.com/in/faizan-mayo-021a06161/
-
-
 <p align="center"><img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/></p>
 <p align="center">
 <a href="https://www.linkedin.com/in/faizan-mayo-021a06161"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a>
 <a href="https://wa.me/923017053611?text=Hello,%20how%20are%20you%20doing%20today?"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp Badge"></a>
+<a href="mailto:faizangame998@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge"></a>
 </p>
 <p align="center"><img src="https://komarev.com/ghpvc/?username=faizanMayo786&style=flat-square&color=blue" alt=""></p>
 
