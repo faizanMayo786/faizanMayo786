@@ -1,5 +1,5 @@
           
-<p align="center"><img src="https://user-images.githubusercontent.com/89972827/194366722-c92bb149-56c2-429a-a533-efdbbc18cd68.png"/>"https://riftcodes.web.app/"</p>
+<p href="https://riftcodes.web.app/", align="center"><img src="https://user-images.githubusercontent.com/89972827/194366722-c92bb149-56c2-429a-a533-efdbbc18cd68.png"/></p>
 <p align="center"><img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/></p>
 <p align="center">
 <a href="https://www.linkedin.com/in/faizan-mayo-021a06161"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a>
