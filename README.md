@@ -1,4 +1,4 @@
-                  
+                   
 <p  align="center"> 
           <a href="https://riftcodes.web.app/"><img src="https://user-images.githubusercontent.com/89972827/194366722-c92bb149-56c2-429a-a533-efdbbc18cd68.png" alt="RIFTCODE web"></a></p>
 <p align="center"><img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/></p>
