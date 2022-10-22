@@ -1,0 +1,13 @@
+// Flutter light build
+flutter build apk --target-platform android-arm64 --analyze-size 
+
+// Flutter Clean
+flutter clean
+
+// Git Commands
+git init
+git add .
+git commit -m "<Tag>"
+git branch -M main
+git remote add origin <URL>
+git push -u origin main
