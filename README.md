@@ -23,7 +23,7 @@ I am a Full Stack Software Engineer <img src="https://media.giphy.com/media/WUlp
 - 📫 How to reach me: &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-faizanMayo-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/faizan-mayo-021a06161) [![WhatsApp Badge](https://img.shields.io/badge/-faizanMayo-green]?style=flat&logo=WhatsApp&logoColor=white)](https://wa.me/923017053611?text=Hello,%20how%20are%20you%20doing%20today?) [![Gmail Badge](https://img.shields.io/badge/-faizanMayo-red?style=flat&logo=Gmail&logoColor=white)](mailto:faizangame998@gmail.com)
 
 ---
-
+ 
 ### 🛠 &nbsp;Languages and Tools :
 
 <p>
