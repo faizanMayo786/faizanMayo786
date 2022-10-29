@@ -20,7 +20,7 @@ I am a Full Stack Software Engineer <img src="https://media.giphy.com/media/WUlp
 - 🔭 I'm working as a Full Stack (Front-end and Back-end) Application Developer. 
 - 🌱 I can work with you to develop applications for you in Flutter Framework. I am loyal to my work and like to work with those who want to lead the future. Programming is my hobby.
 - ⚡ I am not only limited to Flutter but also have experience in other technologies like C++, C#, Python, SQL, and PHP. As I have a background in Software Engineering, I have a great understanding of Software Development Life Cycles, Software architecture and Designs, Data Structures & Algorithms, and Problem Solving.
-- 📫 How to reach me: &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-faizanMayo-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/faizan-mayo-021a06161) [![WhatsApp Badge](https://img.shields.io/badge/-faizanMayo-green]?style=flat&logo=WhatsApp&logoColor=white)](https://wa.me/923017053611?text=Hello,%20how%20are%20you%20doing%20today?) [![Gmail Badge](https://img.shields.io/badge/-faizanMayo-red?style=flat&logo=Gmail&logoColor=white)](mailto:faizangame998@gmail.com)
+- 📫 How to reach me: &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-faizanMayo-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/faizan-mayo-021a06161) [![WhatsApp Badge](https://img.shields.io/badge/-faizanMayo-green]?style=flat&logo=WhatsApp&logoColor=white)](https://api.whatsapp.com/send?phone=923154410655) [![Gmail Badge](https://img.shields.io/badge/-faizanMayo-red?style=flat&logo=Gmail&logoColor=white)](mailto:faizangame998@gmail.com)
 
 ---
   
