@@ -22,7 +22,7 @@ I am a Full Stack Software Engineer <img src="https://media.giphy.com/media/WUlp
 - ⚡ I am not only limited to Flutter but also have experience in other technologies like C++, C#, Python, SQL, and PHP. As I have a background in Software Engineering, I have a great understanding of Software Development Life Cycles, Software architecture and Designs, Data Structures & Algorithms, and Problem Solving.
 - 📫 How to reach me: &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-faizanMayo-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/faizan-mayo-021a06161) [![WhatsApp Badge](https://img.shields.io/badge/-faizanMayo-green]?style=flat&logo=WhatsApp&logoColor=white)](https://api.whatsapp.com/send?phone=923154410655) [![Gmail Badge](https://img.shields.io/badge/-faizanMayo-red?style=flat&logo=Gmail&logoColor=white)](mailto:faizangame998@gmail.com)
 
----
+--- 
   
 ### 🛠 &nbsp;Languages and Tools :
 
