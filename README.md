@@ -46,9 +46,8 @@ I am a Full Stack Software Engineer <img src="https://media.giphy.com/media/WUlp
 ---
 
 ### 🔥 &nbsp; My Stats :
-<p align="center">
 [![Faizan's github stats](https://github-readme-stats.vercel.app/api?username=faizanMayo786&theme=gotham)](https://github.com/faizanMayo786/github-readme-stats)
-  </p>
+
 
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=faizanMayo786&theme=dark&background=000000)](https://git.io/streak-stats)
 
