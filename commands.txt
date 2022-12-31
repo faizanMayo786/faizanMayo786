@@ -1,5 +1,6 @@
 // Flutter light build
 flutter build apk --target-platform android-arm64 --analyze-size 
+flutter run -d chrome --web-hostname localhost --web-port 5000
 
 // Flutter Clean
 flutter clean
