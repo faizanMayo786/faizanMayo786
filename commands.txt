@@ -2,6 +2,22 @@
 flutter build apk --target-platform android-arm64 --analyze-size 
 flutter run -d chrome --web-hostname localhost --web-port 5000
 
+flutter create --platforms=web <name>
+
+// See flutter --help create for full documentation of the platforms flag, as well as all the other creation options.
+
+flutter config
+flutter config --no-enable-web
+flutter config --no-enable-macos-desktop
+flutter config --no-enable-windows-desktop
+flutter config --no-enable-linux-desktop
+flutter config --no-enable-macos-desktop --no-enable-windows-desktop --no-enable-linux-desktop
+ 
+flutter config --enable-web 
+flutter config --enable-macos-desktop
+flutter config --enable-windows-desktop
+flutter config --enable-linux-desktop
+ 
 // Flutter Clean
 flutter clean
 
