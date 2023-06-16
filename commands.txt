@@ -2,6 +2,19 @@
 flutter build apk --target-platform android-arm64 --analyze-size 
 flutter run -d chrome --web-hostname localhost --web-port 5000
 
+//auto version detect
+{
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  // Remove .fvm files from search
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  // Remove from file watching
+  "files.watcherExclude": {
+    "**/.fvm": true
+  }
+}
+//
 flutter create --platforms=web <name>
 
 // See flutter --help create for full documentation of the platforms flag, as well as all the other creation options.
