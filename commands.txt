@@ -45,3 +45,8 @@ git commit -m "<Tag>"
 git branch -M main
 git remote add origin <URL>
 git push -u origin main
+
+// Daily Commits
+git add .
+git commit -m "<TAG>"
+git push
