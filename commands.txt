@@ -1,6 +1,8 @@
 // Flutter light build
 flutter build apk --target-platform android-arm64 --analyze-size 
 flutter run -d chrome --web-hostname localhost --web-port 5000
+flutter pub run build_runner build --delete-conflicting-outputs
+
 
 // To Resolve errors after flutter project upgrade
 flutter pub upgrade --major-versions
