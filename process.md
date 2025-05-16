@@ -193,4 +193,3 @@ Below is a **detailed, step-by-step “first-time” setup guide** that takes yo
 
 ---
 
-With these step-by-step instructions, you’ll have **every piece in place** for LianeS’s desired automation—LinkedIn engagement, DMs, enrichment, email outreach, and hot-lead follow-up. Let me know if you want deeper detail on any specific tool’s settings!
