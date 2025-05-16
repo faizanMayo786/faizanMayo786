@@ -23,9 +23,9 @@ Here’s a **flow diagram**
 5. **Email Warm-Up & Outreach**
    - Enriched emails enter Instantly domain-warmup
    - After 3–5 days → pushed to Smartlead/Lemlist sequence:
-   – *Email 1:* Prompt stack
-   – *Email 2:* Case study
-   – *Email 3:* Call-to-action + Calendly link
+      - *Email 1:* Prompt stack
+      - *Email 2:* Case study
+      - *Email 3:* Call-to-action + Calendly link
 
 6. **Intent-Based Handoff**
    - CRM flags “Hot” when:
