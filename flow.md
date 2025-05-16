@@ -41,10 +41,10 @@ Here’s a **flow diagram**
 ---
 
 **Example Week 1 Timeline**
-Mon – Write + schedule LinkedIn post
-Tue – Post goes live; auto-DMs sent; new leads logged
-Wed – Leads enriched automatically
-Thu – Domain warms; first email goes out
-Fri – Review dashboard; flag hot leads; book discovery calls
+- Mon – Write + schedule LinkedIn post
+- Tue – Post goes live; auto-DMs sent; new leads logged
+- Wed – Leads enriched automatically
+- Thu – Domain warms; first email goes out
+- Fri – Review dashboard; flag hot leads; book discovery calls
 
 
