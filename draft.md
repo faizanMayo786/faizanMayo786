@@ -44,9 +44,5 @@ Because most companies:
 It’s time to pause and look deeper.  
 This isn’t a training issue. It’s a business leak.
 
-Let’s Talk  
-I work with manufacturers worldwide — from plant floors to boardrooms —  
-to help HR, supervisors, and leadership teams uncover and close these hidden gaps.
-
 ✅ comment "Gap" to go deeper in the WHY  
 ✅ connect with me
