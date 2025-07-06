@@ -1,8 +1,8 @@
 # VTrainer Pro Backend - Comprehensive System Overview
 
 ## 📋 Table of Contents
-- [Project Summary](#project-summary)
-- [System Architecture](#system-architecture)
+- [🎯 Project Summary](#project-summary)
+- [🏗️ System Architecture](#system-architecture)
 - [Data Collection & Processing](#data-collection--processing)
 - [Knowledge Base Integration](#knowledge-base-integration)
 - [AI-Powered Workout Generation](#ai-powered-workout-generation)
