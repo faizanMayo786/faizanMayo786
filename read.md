@@ -4,7 +4,7 @@
 🚨 **Still guessing why your top people leave?**
 
 Here’s the truth:  
-**One exit costs $8K+ — not counting lost morale, team disruption, or client confidence.**  
+**One exit costs $6500+ — not counting lost morale, team disruption, or client confidence.**  
 But 90% of companies don’t *really* know what’s driving disengagement or churn.
 
 So we built something to help.
@@ -40,7 +40,7 @@ Grow stronger teams.
 
 ---
 # OR Linkedin Post 2:
-Employee turnover isn’t just an HR headache—it’s a $100,000+ leak in your revenue bucket. And most leaders can’t even find the hole.
+Employee turnover isn’t just an HR headache—it’s a $10,000+ leak in your revenue bucket. And most leaders can’t even find the hole.
 
 After helping 87 companies plug retention leaks, we found:
 - 92% know turnover costs thousands per exit
