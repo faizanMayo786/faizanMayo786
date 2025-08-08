@@ -1,56 +1,151 @@
-                     
-<p  align="center">  
-          <a href="https://riftcodes.web.app/"><img src="https://user-images.githubusercontent.com/89972827/194366722-c92bb149-56c2-429a-a533-efdbbc18cd68.png" alt="RIFTCODE web"></a></p>
-<p align="center"><img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/></p>
+<div align="center">
+
+<!-- Header with Glassmorphism -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 30px;">
+   <a href="https://reckap.com" target="_blank">
+  <img src="https://github.com/user-attachments/assets/b6bf0830-79eb-42ba-b40f-8b7d7364c092" 
+       alt="Reckap" 
+       width="300" 
+       style="border-radius: 20px; background: #FFFFFF; border: 2px solid #f0f0f0;">
+</a>
+  <h1>Hi there, I'm Faizan Mayo 👋</h1>
+  <h3>CTO & Co-Founder at Reckap | AI & Product Development Expert</h3> 
+
+  <p align="center">
+    <a href="https://www.linkedin.com/in/faizan-mayo-021a06161">
+      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+    </a>
+    <a href="https://wa.me/923017053611">
+      <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white">
+    </a>
+    <a href="mailto:business@reckap.com">
+      <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white">
+    </a>
+    <a href="https://reckap.com/schedule-meeting">
+      <img src="https://img.shields.io/badge/Schedule%20Meeting-FF6C37?style=for-the-badge">
+    </a>
+  </p>
+</div>
+
+<!-- Animated GIF -->
+<img src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif" width="300" alt="Building the future">
+
+</div>
+
+---
+
+### 🚀 About Me
+
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.2); margin: 20px 0;">
+  
+Technology leader with **5+ years** experience building scalable products. At <a href="https://reckap.com">Reckap</a>, I:
+
+- Lead engineering teams developing AI-powered solutions
+- Architect systems combining cutting-edge tech with business needs
+- Specialize in Flutter, AI integration, and product strategy
+- Mentor startups from concept to production
+
+</div>
+
+---
+
+### 🛠 Tech Stack
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+
+<!-- Frontend Card -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+  <h3 >🌐 Frontend</h3>
+  <p >
+    <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white">
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  </p>
+</div>
+
+<!-- Backend Card -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+  <h3 >⚙️ Backend</h3>
+  <p >
+    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+    <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
+  </p>
+</div>
+
+<!-- Database Card -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+  <h3 >🗄️ Database</h3>
+  <p >
+    <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+    <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
+    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black">
+  </p>
+</div>
+
+<!-- AI/ML Card -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+  <h3 >🧠 AI/ML</h3>
+  <p >
+    <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
+    <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
+    <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white">
+  </p>
+</div>
+
+<!-- DevOps Card -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+  <h3 >☁️ DevOps</h3>
+  <p >
+    <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white">
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+    <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white">
+  </p>
+</div>
+
+<!-- Blockchain Card -->
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+  <h3 >🔗 Blockchain</h3>
+  <p >
+    <img src="https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=ethereum&logoColor=white">
+    <img src="https://img.shields.io/badge/IPFS-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white">
+    <img src="https://img.shields.io/badge/Solidity-363636?style=for-the-badge&logo=solidity&logoColor=white">
+  </p>
+</div>
+
+</div>
+
+---
+
+### 📊 GitHub Stats
+
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.2); margin: 20px 0;">
+
 <p align="center">
-<a href="https://www.linkedin.com/in/faizan-mayo-021a06161"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a>
-<a href="https://wa.me/923017053611?text=Hello,%20how%20are%20you%20doing%20today?"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp Badge"></a>
-<a href="mailto:faizangame998@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge"></a>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=faizanMayo786&show_icons=true&theme=vision-friendly-dark&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=faizanMayo786&layout=compact&langs_count=8&theme=vision-friendly-dark"/>
 </p>
-<p align="center"><img src="https://komarev.com/ghpvc/?username=faizanMayo786&style=flat-square&color=blue" alt=""></p>
+ 
 
-<h1 align="center">Hey There! I am Faizan<img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="40"></h1>
-
-<p align="center"><img src="https://media.giphy.com/media/dWesBcTLavkZuG35MI/giphy.gif" width="600" height="300"  /></p>
-
-### :man_technologist: &nbsp;About Me :
-
-I am a Full Stack Software Engineer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> from Pakistan.
-
-- 🔭 I'm working as a Full Stack (Front-end and Back-end) Application Developer. 
-- 🌱 I can work with you to develop applications for you in Flutter Framework. I am loyal to my work and like to work with those who want to lead the future. Programming is my hobby.
-- ⚡ I am not only limited to Flutter but also have experience in other technologies like C++, C#, Python, SQL, and PHP. As I have a background in Software Engineering, I have a great understanding of Software Development Life Cycles, Software architecture and Designs, Data Structures & Algorithms, and Problem Solving.
-- 📫 How to reach me: &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-faizanMayo-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/faizan-mayo-021a06161) [![WhatsApp Badge](https://img.shields.io/badge/-faizanMayo-green]?style=flat&logo=WhatsApp&logoColor=white)](https://api.whatsapp.com/send?phone=923154410655) [![Gmail Badge](https://img.shields.io/badge/-faizanMayo-red?style=flat&logo=Gmail&logoColor=white)](mailto:faizangame998@gmail.com)
-
---- 
-  
-### 🛠 &nbsp;Languages and Tools :
-
-<p>
-<img src="https://github.com/devicons/devicon/blob/master/icons/dart/dart-original.svg" title="Dart" alt="Dart" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/flutter/flutter-original.svg" title="Flutter" alt="Flutter" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" title="Figma" alt="Figma " width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/xd/xd-line.svg" title="XD" alt="XD " width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original-wordmark.svg" title="VSCode" alt="VSCode " width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/csharp/csharp-line.svg" title="C#" alt="C# " width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/cplusplus/cplusplus-line.svg"  title="C++" alt="C++" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/php/php-original.svg" title="PHP" alt="PHP" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL"  alt="MySQL" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
-<img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" title="Postman"  alt="Postman" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>&nbsp;
-</p>
+</div>
 
 ---
 
-### 🔥 &nbsp; My Stats :
+### 💡 Let's Collaborate!
 
+<div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.2); margin: 20px 0; text-align: center;">
 
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=faizanMayo786&theme=dark&background=000000)](https://git.io/streak-stats)
+<h3>Building something amazing?</h3>
+<p>I partner with startups, founders, and enterprises to turn ideas into reality.</p>
 
+<a href="https://reckap.com/schedule-meeting">
+  <img src="https://img.shields.io/badge/Schedule_a_Call-FF6C37?style=for-the-badge&logo=google-meet&logoColor=white" style="margin-top: 10px;">
+</a>
 
+<p>Or reach out directly: <a href="mailto:business@reckap.com">business@reckap.com</a></p>
 
----
-  
+</div>
+
+<p align="center">
+  <img src="https://media.giphy.com/media/jRf5fsn8G6YaogAWxn/giphy.gif" width="200" alt="Coding">
+</p>
