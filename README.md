@@ -18,7 +18,7 @@
     <a href="https://wa.me/923017053611">
       <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white">
     </a>
-    <a href="mailto:business@reckap.com">
+    <a href="mailto:faizangame998@gmail.com">
       <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white">
     </a>
     <a href="https://reckap.com/schedule-meeting">
