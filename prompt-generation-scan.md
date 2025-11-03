@@ -2,7 +2,7 @@
 
 **Purpose:** Supporting development of a prompt pack that generates safe, unbiased, layered responses while avoiding mirroring behavior.
 
-**Date:** November 2025
+**Date:** 3 November 2025
 
 ---
 
