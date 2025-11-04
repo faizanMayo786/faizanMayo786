@@ -4,6 +4,8 @@
 
 **Research Quality:** Peer-reviewed academic sources, industry best practices, and empirical frameworks
 
+In Collaboration with **Digital Good Project**
+
 ---
 
 ## Executive Summary
