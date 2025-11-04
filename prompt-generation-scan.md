@@ -4,7 +4,7 @@
 
 **Research Quality:** Peer-reviewed academic sources, industry best practices, and empirical frameworks
 
-In Collaboration with **Digital Good Project**
+This research was developed in collaboration with the **Digital Good Project** (2025).
 
 ---
 
