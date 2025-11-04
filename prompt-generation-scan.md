@@ -4,7 +4,10 @@
 
 **Research Quality:** Peer-reviewed academic sources, industry best practices, and empirical frameworks
 
-This research was developed in collaboration with the **Digital Good Project** (2025).
+Authorship & Acknowledgment
+This research report on Prompt Generation and Bias Reduction was collaboratively developed by Digital Good Project and Faizan Elahi (Reckap Solutions).
+The work was commissioned as part of ongoing research for ethical, layered, and inclusive prompt design.
+© 2025 Digital Good Project & Faizan Elahi. All rights reserved.
 
 ---
 
