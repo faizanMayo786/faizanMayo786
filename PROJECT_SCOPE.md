@@ -182,8 +182,6 @@ To make the application production-ready, the following work is required:
 
 **Total Estimated Fix Time:** 79 hours
 
-For detailed assessment and quote, see [PROJECT_ASSESSMENT.md](./PROJECT_ASSESSMENT.md)
-
 ---
 
 ## ✨ Features
@@ -1388,5 +1386,6 @@ If you need assistance:
 [Back to Top](#parenting-genie---ai-powered-parenting-assistant)
 
 </div>
+
 
 
