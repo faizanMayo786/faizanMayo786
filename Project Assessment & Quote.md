@@ -362,7 +362,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - `supabase/functions/chat/index.ts` (enhance prompts)
   - Authentication state management across app
 
-- **Estimated Hours:** 25 hours
+- **Estimated Hours:** 20 hours
 - **Priority:** Critical
 
 #### 1.2 Payment Integration (Stripe)
@@ -391,7 +391,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Modify: `components/ChatInterface.tsx` (connect upgrade modal)
   - Modify: Database schema (if needed)
 
-- **Estimated Hours:** 35 hours
+- **Estimated Hours:** 30 hours
 - **Priority:** Critical
 
 #### 1.3 Premium Feature Gating
@@ -404,7 +404,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Update all premium features to check access
   - Add upgrade prompts where needed
 
-- **Estimated Hours:** 8 hours
+- **Estimated Hours:** 6 hours
 - **Priority:** High
 
 #### 1.4 Error Handling & Edge Cases
@@ -416,7 +416,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Handle network failures gracefully
   - Improve error messages for users
 
-- **Estimated Hours:** 5 hours
+- **Estimated Hours:** 4 hours
 - **Priority:** Medium
 
 #### 1.5 Security Review & RLS Policies
@@ -428,10 +428,10 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Test security boundaries
   - Fix any security vulnerabilities
 
-- **Estimated Hours:** 6 hours
+- **Estimated Hours:** 5 hours
 - **Priority:** High
 
-**Phase 1 Total:** 79 hours
+**Phase 1 Total:** 65 hours
 
 ---
 
@@ -502,12 +502,12 @@ These are optional features that can be added later if needed:
 
 | Task                           | Hours  | Cost (USD) |
 | ------------------------------ | ------ | ---------- |
-| Fix Critical Bugs              | 25     | $750       |
-| Payment Integration (Stripe)   | 35     | $1,050     |
-| Premium Feature Gating         | 8      | $240       |
-| Error Handling & Edge Cases    | 5      | $150       |
-| Security Review & RLS Policies | 6      | $180       |
-| **Phase 1 Subtotal**           | **79** | **$2,370** |
+| Fix Critical Bugs              | 20     | $600       |
+| Payment Integration (Stripe)   | 30     | $900       |
+| Premium Feature Gating         | 6      | $180       |
+| Error Handling & Edge Cases    | 4      | $120       |
+| Security Review & RLS Policies | 5      | $150       |
+| **Phase 1 Subtotal**           | **65** | **$1,950** |
 
 ### Phase 2: Quality Improvements (Optional - Only if needed)
 
@@ -530,8 +530,8 @@ These are optional features that can be added later if needed:
 
 #### Required Scope (Phase 1 Only)
 
-- **Hours:** 79 hours
-- **Cost:** $2,370 USD
+- **Hours:** 65 hours
+- **Cost:** $1,950 USD
 - **Timeline:** 2-3 weeks (part-time) or 1.5 weeks (full-time)
 - **Includes:**
   - Fix voice chat error
@@ -545,15 +545,15 @@ These are optional features that can be added later if needed:
 
 #### With Optional Improvements (Phases 1 + 2)
 
-- **Hours:** 92 hours
-- **Cost:** $2,760 USD
+- **Hours:** 78 hours
+- **Cost:** $2,340 USD
 - **Timeline:** 3-4 weeks (part-time) or 2 weeks (full-time)
 - **Only if:** Mobile or performance issues are found
 
 #### With Testing (Phases 1 + 3)
 
-- **Hours:** 89 hours
-- **Cost:** $2,670 USD
+- **Hours:** 75 hours
+- **Cost:** $2,250 USD
 - **Timeline:** 3-4 weeks (part-time) or 2 weeks (full-time)
 - **Only if:** Testing is requested
 
@@ -603,7 +603,7 @@ These are optional features that can be added later if needed:
 
 **Focus:** Fix critical bugs and get payment working
 
-- **Cost:** $2,370
+- **Cost:** $1,950
 - **Timeline:** 1.5-3 weeks
 - **Best for:** Getting the app monetized and working properly
 - **What's included:**
@@ -626,9 +626,9 @@ These are optional features that can be added later if needed:
 
 **Option A: Milestone-Based (Recommended)**
 
-- 30% upfront ($711 for Phase 1)
+- 30% upfront ($585 for Phase 1)
 - 40% at mid-point (after payment integration working)
-- 30% upon final delivery and acceptance ($711)
+- 30% upon final delivery and acceptance ($585)
 
 **Option B: Weekly Billing**
 
@@ -796,7 +796,7 @@ Please let me know and I'll be happy to clarify.
 
 **Required Investment (Phase 1):**
 
-- **Cost:** $2,370 USD
+- **Cost:** $1,950 USD
 - **Timeline:** 1.5-3 weeks
 - **What you get:**
   - Voice chat fixed
