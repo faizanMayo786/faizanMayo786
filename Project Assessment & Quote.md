@@ -55,44 +55,47 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
 - Database integration (30+ tables)
 - File structure organization
 
-#### ✅ AI Chat System
+#### ⚠️ AI Chat System
 
-- **Status:** Fully functional
-- Chat interface with conversation management
-- AI integration (Lovable AI → Gemini 2.5 Flash)
-- Streaming responses
-- Personalized system prompts
-- Message history persistence
-- Multi-conversation support
+- **Status:** Partially functional - Context awareness missing
+- **Working:**
+  - Chat interface with conversation management
+  - AI integration (Lovable AI → Gemini 2.5 Flash)
+  - Streaming responses
+  - Message history persistence
+  - Multi-conversation support
+- **Issues:**
+  - ❌ Gives generic answers instead of context-aware responses
+  - ❌ Does not access user profile, tracker data, or progress
+  - ❌ Cannot answer questions like "tell me my feeding tracker report"
+  - ❌ System prompts not properly utilizing tracker data and user context
+- **Fix Required:** Enhance AI prompts to include tracker data, user profile, and context
 
 **Location:** `components/ChatInterface.tsx`, `supabase/functions/chat/index.ts`
 
-#### ✅ Voice Chat Integration
+#### ❌ Voice Chat Integration
 
-- **Status:** Fully functional
-- ElevenLabs integration
-- Voice session management
-- Real-time voice transcription
-- Microphone controls
+- **Status:** Broken - Critical Error
+- **Error:** Returns 401 "Failed to get signed URL: 401"
+- **Location:** `supabase/functions/elevenlabs-session/index.ts:90`
+- **Root Cause:** Missing or invalid ElevenLabs API key/Agent ID in environment variables
+- **Impact:** Voice chat feature completely non-functional
+- **Fix Required:** Verify API keys, fix authentication, add proper error handling
 
 **Location:** `hooks/useVoiceChat.tsx`, `supabase/functions/elevenlabs-session/index.ts`
 
-#### ✅ Tracker System (8 Trackers)
+#### ⚠️ Tracker System (8 Trackers)
 
-- **Status:** Fully functional
-- All 8 trackers working:
-  1. Feeding Tracker
-  2. Nappy Tracker
-  3. Sleep Tracker
-  4. Pump Tracker
-  5. Growth Tracker
-  6. Mood Tracker
-  7. Temperature Tracker
-  8. Medicine & Vaccine Tracker
-- Age-based expectations
-- Health alerts
-- Progress tracking
-- Data visualization
+- **Status:** Partially functional - Multiple authentication issues
+- **Working Trackers:**
+  1. ✅ Feeding Tracker
+  2. ✅ Nappy Tracker
+  3. ✅ Sleep Tracker
+  4. ✅ Pump Tracker
+  5. ✅ Growth Tracker
+  6. ✅ Mood Tracker
+- **Broken Trackers:** 7. ❌ Temperature Tracker - Shows "sign in required" even when logged in 8. ❌ Medicine & Vaccine Tracker - Save button doesn't work, vaccine dropdown not populating
+- **Issues:** Authentication session management problems affecting multiple trackers
 
 **Location:** `components/trackers/*.tsx`
 
@@ -106,13 +109,13 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
 
 **Location:** `pages/Dashboard.tsx`, `supabase/functions/dashboard-insights/index.ts`
 
-#### ✅ Appointment Management
+#### ❌ Appointment Management
 
-- **Status:** Fully functional
-- Full CRUD operations
-- Reminder system
-- Bring list management
-- Multiple appointment types
+- **Status:** Broken - Authentication Error
+- **Error:** "Not authenticated" when trying to create appointments
+- **Location:** `pages/Appointments.tsx`, `components/appointments/AddAppointmentDialog.tsx`
+- **Impact:** Users cannot create appointments
+- **Root Cause:** Authentication session not properly managed/rendered
 
 **Location:** `pages/Appointments.tsx`, `components/appointments/*.tsx`
 
@@ -172,25 +175,58 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
 
 #### 🐛 Critical Issues Found
 
-1. **Voice Chat Not Working - ElevenLabs API Error**
+1. **Voice Chat - 401 Authentication Error**
 
    - **Issue:** Voice chat returns 401 error: "Failed to get signed URL: 401"
-   - **Error Location:** `supabase/functions/elevenlabs-session/index.ts:90`
-   - **Root Cause:** Likely missing or invalid ElevenLabs API key or Agent ID in environment variables
+   - **Location:** `supabase/functions/elevenlabs-session/index.ts:90`
+   - **Root Cause:** Missing or invalid ElevenLabs API key/Agent ID in environment variables
    - **Impact:** Voice chat feature completely broken
-   - **Priority:** High
-   - **Fix Time:** 2-4 hours (verify API keys, test connection, add proper error handling)
+   - **Priority:** Critical
+   - **Fix Time:** 3 hours
 
-2. **5-Message Limit - Upgrade Modal Not Connected**
+2. **Authentication Session Management**
+
+   - **Issue:** Login session not properly managed and rendered throughout app
+   - **Location:** Multiple components (Appointments, Milestones, Temperature, Medicine trackers)
+   - **Symptoms:**
+     - Appointments show "Not authenticated" error even when logged in
+     - Milestone tracker cannot save (authentication error)
+     - Temperature tracker shows "sign in required" when logged in
+     - Medicine/Vaccine tracker save button doesn't work
+   - **Root Cause:** Session state not properly synchronized, auth checks failing
+   - **Impact:** Multiple features broken, users cannot save data
+   - **Priority:** Critical
+   - **Fix Time:** 8 hours
+
+3. **Medicine & Vaccine Tracker Issues**
+
+   - **Issue 1:** Save button does nothing when pressed
+   - **Issue 2:** Vaccine name dropdown not populating
+   - **Location:** `components/trackers/MedicineVaccineTracker.tsx`
+   - **Impact:** Users cannot add medicines or vaccines
+   - **Priority:** High
+   - **Fix Time:** 4 hours
+
+4. **AI Chat - Context Awareness Missing**
+
+   - **Issue:** AI gives generic answers instead of context-aware responses
+   - **Problem:** Cannot access user profile, tracker data, or progress
+   - **Example:** When asked "tell me my feeding tracker report", responds with generic message saying it can't access data
+   - **Location:** `supabase/functions/chat/index.ts`
+   - **Root Cause:** System prompts not properly including tracker data and user context
+   - **Impact:** Poor user experience, AI not providing personalized help
+   - **Priority:** High
+   - **Fix Time:** 6 hours
+
+5. **5-Message Limit - Upgrade Modal Not Connected**
 
    - **Issue:** After 5 messages, upgrade modal shows but "Create Profile" and payment buttons don't work
    - **Location:** `components/ChatInterface.tsx:1098-1134`
-   - **Current Behavior:** Modal appears but buttons don't connect to payment flow
    - **Impact:** Users can't upgrade after free messages
    - **Priority:** High
    - **Fix Time:** Part of payment integration (included in estimate)
 
-3. **Premium Feature Gating - Incomplete**
+6. **Premium Feature Gating - Incomplete**
    - **Issue:** Token modal shows "Buy Tokens" and "Subscribe" buttons but no actual payment integration
    - **Location:** `components/ExploreToolsSidebar.tsx:195-206`
    - **Impact:** Users cannot actually purchase tokens or subscriptions
@@ -199,28 +235,20 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
 
 #### ⚠️ Medium Priority Issues
 
-4. **Error Handling - Edge Cases**
+7. **Error Handling - Edge Cases**
 
    - **Issue:** Some API calls may not have comprehensive error handling
    - **Location:** Various components
    - **Impact:** Users may see unhandled errors
    - **Priority:** Medium
-   - **Fix Time:** 4-6 hours
+   - **Fix Time:** 5 hours
 
-5. **Loading States**
-
-   - **Issue:** Some components may not show loading states during API calls
-   - **Location:** Various components
-   - **Impact:** Poor UX during slow network
-   - **Priority:** Medium
-   - **Fix Time:** 3-5 hours
-
-6. **Database RLS Policies**
+8. **Database RLS Policies**
    - **Issue:** Need to verify all Row Level Security policies are properly configured
    - **Location:** Supabase database
    - **Impact:** Security concerns
    - **Priority:** High
-   - **Fix Time:** 4-6 hours
+   - **Fix Time:** 6 hours
 
 ---
 
@@ -310,23 +338,31 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
 
 ### Phase 1: Critical Fixes & Payment Integration (Required)
 
-#### 1.1 Fix Voice Chat Error (Critical Bug)
+#### 1.1 Fix Critical Bugs
 
 - **Tasks:**
 
-  - Verify ElevenLabs API key and Agent ID configuration
-  - Fix 401 authentication error
-  - Add proper error handling and user-friendly error messages
-  - Test voice chat functionality end-to-end
-  - Add error logging for debugging
+  - Fix voice chat 401 error (verify ElevenLabs API keys, fix authentication)
+  - Fix authentication session management (proper session state, auth checks)
+  - Fix Medicine & Vaccine tracker (save button, dropdown population)
+  - Fix Temperature tracker authentication issue
+  - Fix Appointments creation authentication error
+  - Fix Milestone tracker save authentication error
+  - Enhance AI chat context awareness (include tracker data, user profile in prompts)
 
 - **Components to Modify:**
 
   - `supabase/functions/elevenlabs-session/index.ts`
-  - `hooks/useVoiceChat.tsx` (error handling)
-  - Environment variables configuration
+  - `hooks/useVoiceChat.tsx`
+  - `components/trackers/MedicineVaccineTracker.tsx`
+  - `components/trackers/TemperatureTracker.tsx`
+  - `pages/Appointments.tsx`
+  - `components/appointments/AddAppointmentDialog.tsx`
+  - `components/MilestoneTracker.tsx`
+  - `supabase/functions/chat/index.ts` (enhance prompts)
+  - Authentication state management across app
 
-- **Estimated Hours:** 2-4 hours
+- **Estimated Hours:** 25 hours
 - **Priority:** Critical
 
 #### 1.2 Payment Integration (Stripe)
@@ -339,7 +375,8 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Build subscription purchase flow
   - Build token purchase flow
   - Handle payment success/failure
-  - Connect upgrade modal buttons to payment flow
+  - Connect upgrade modal buttons (5-message limit)
+  - Connect premium feature payment buttons
   - Subscription management UI
   - Token balance display and management
 
@@ -354,7 +391,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Modify: `components/ChatInterface.tsx` (connect upgrade modal)
   - Modify: Database schema (if needed)
 
-- **Estimated Hours:** 30-40 hours
+- **Estimated Hours:** 35 hours
 - **Priority:** Critical
 
 #### 1.3 Premium Feature Gating
@@ -365,9 +402,9 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Implement token deduction logic
   - Add subscription-based access checks
   - Update all premium features to check access
-  - Fix 5-message limit upgrade flow
+  - Add upgrade prompts where needed
 
-- **Estimated Hours:** 8-10 hours
+- **Estimated Hours:** 8 hours
 - **Priority:** High
 
 #### 1.4 Error Handling & Edge Cases
@@ -379,7 +416,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Handle network failures gracefully
   - Improve error messages for users
 
-- **Estimated Hours:** 4-6 hours
+- **Estimated Hours:** 5 hours
 - **Priority:** Medium
 
 #### 1.5 Security Review & RLS Policies
@@ -391,10 +428,10 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Test security boundaries
   - Fix any security vulnerabilities
 
-- **Estimated Hours:** 4-6 hours
+- **Estimated Hours:** 6 hours
 - **Priority:** High
 
-**Phase 1 Total:** 48-66 hours
+**Phase 1 Total:** 79 hours
 
 ---
 
@@ -408,7 +445,7 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Fix any critical mobile issues
   - Test on various devices
 
-- **Estimated Hours:** 6-10 hours (only if issues found)
+- **Estimated Hours:** 8 hours (only if issues found)
 - **Priority:** Low-Medium
 
 #### 2.2 Performance Optimization (If needed)
@@ -419,14 +456,14 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Image optimization
   - Bundle size check
 
-- **Estimated Hours:** 4-6 hours (only if performance issues)
+- **Estimated Hours:** 5 hours (only if performance issues)
 - **Priority:** Low
 
-**Phase 2 Total:** 10-16 hours (only if needed)
+**Phase 2 Total:** 13 hours (only if needed)
 
 ---
 
-### Phase 3: Testing & Documentation (Optional - Future)
+### Phase 3: Testing (Optional - Future)
 
 #### 3.1 Basic Testing (If requested)
 
@@ -435,10 +472,10 @@ This document provides a comprehensive assessment of the **Parenting Genie** cod
   - Manual testing of critical flows
   - Fix any bugs found during testing
 
-- **Estimated Hours:** 8-12 hours (if requested)
+- **Estimated Hours:** 10 hours (if requested)
 - **Priority:** Low
 
-**Phase 3 Total:** 8-12 hours (optional)
+**Phase 3 Total:** 10 hours (optional)
 
 ---
 
@@ -463,29 +500,29 @@ These are optional features that can be added later if needed:
 
 ### Phase 1: Critical Fixes & Payment Integration (Required)
 
-| Task                           | Hours     | Cost (USD)          |
-| ------------------------------ | --------- | ------------------- |
-| Fix Voice Chat Error (401)     | 2-4       | $60 - $120          |
-| Payment Integration (Stripe)   | 30-40     | $900 - $1,200       |
-| Premium Feature Gating         | 8-10      | $240 - $300         |
-| Error Handling & Edge Cases    | 4-6       | $120 - $180         |
-| Security Review & RLS Policies | 4-6       | $120 - $180         |
-| **Phase 1 Subtotal**           | **48-66** | **$1,440 - $1,980** |
+| Task                           | Hours  | Cost (USD) |
+| ------------------------------ | ------ | ---------- |
+| Fix Critical Bugs              | 25     | $750       |
+| Payment Integration (Stripe)   | 35     | $1,050     |
+| Premium Feature Gating         | 8      | $240       |
+| Error Handling & Edge Cases    | 5      | $150       |
+| Security Review & RLS Policies | 6      | $180       |
+| **Phase 1 Subtotal**           | **79** | **$2,370** |
 
 ### Phase 2: Quality Improvements (Optional - Only if needed)
 
-| Task                                 | Hours     | Cost (USD)      |
-| ------------------------------------ | --------- | --------------- |
-| Mobile Optimization (if issues)      | 6-10      | $180 - $300     |
-| Performance Optimization (if needed) | 4-6       | $120 - $180     |
-| **Phase 2 Subtotal**                 | **10-16** | **$300 - $480** |
+| Task                                 | Hours  | Cost (USD) |
+| ------------------------------------ | ------ | ---------- |
+| Mobile Optimization (if issues)      | 8      | $240       |
+| Performance Optimization (if needed) | 5      | $150       |
+| **Phase 2 Subtotal**                 | **13** | **$390**   |
 
 ### Phase 3: Testing (Optional - If requested)
 
-| Task                      | Hours    | Cost (USD)      |
-| ------------------------- | -------- | --------------- |
-| Basic Testing & Bug Fixes | 8-12     | $240 - $360     |
-| **Phase 3 Subtotal**      | **8-12** | **$240 - $360** |
+| Task                      | Hours  | Cost (USD) |
+| ------------------------- | ------ | ---------- |
+| Basic Testing & Bug Fixes | 10     | $300       |
+| **Phase 3 Subtotal**      | **10** | **$300**   |
 
 ---
 
@@ -493,11 +530,14 @@ These are optional features that can be added later if needed:
 
 #### Required Scope (Phase 1 Only)
 
-- **Hours:** 48-66 hours
-- **Cost:** $1,440 - $1,980 USD
+- **Hours:** 79 hours
+- **Cost:** $2,370 USD
 - **Timeline:** 2-3 weeks (part-time) or 1.5 weeks (full-time)
 - **Includes:**
   - Fix voice chat error
+  - Fix authentication session management
+  - Fix all broken trackers (Medicine, Temperature, Appointments, Milestones)
+  - Enhance AI chat context awareness
   - Complete payment integration
   - Premium feature gating
   - Basic error handling
@@ -505,21 +545,21 @@ These are optional features that can be added later if needed:
 
 #### With Optional Improvements (Phases 1 + 2)
 
-- **Hours:** 58-82 hours
-- **Cost:** $1,740 - $2,460 USD
+- **Hours:** 92 hours
+- **Cost:** $2,760 USD
 - **Timeline:** 3-4 weeks (part-time) or 2 weeks (full-time)
 - **Only if:** Mobile or performance issues are found
 
 #### With Testing (Phases 1 + 3)
 
-- **Hours:** 56-78 hours
-- **Cost:** $1,680 - $2,340 USD
+- **Hours:** 89 hours
+- **Cost:** $2,670 USD
 - **Timeline:** 3-4 weeks (part-time) or 2 weeks (full-time)
 - **Only if:** Testing is requested
 
 ---
 
-## 📅 Timeline Estimates
+## 📅 Timeline Estimates & Completion Schedule
 
 ### Phase 1: Critical Fixes (Required)
 
@@ -529,8 +569,17 @@ These are optional features that can be added later if needed:
   - Working payment integration
   - Premium features fully functional
   - 5-message upgrade flow connected
+  - All authentication issues fixed
+  - All broken trackers fixed
+  - AI chat context awareness enhanced
   - Basic error handling
-  - Security review completed
+  - Security review
+
+**Estimated Completion Schedule (Phase 1):**
+
+- **If starting immediately:** Completion by mid-January 2026
+- **Part-time (20 hours/week):** 2.5-3 weeks
+- **Full-time (40 hours/week):** 1.5-2 weeks
 
 ### Phase 2: Quality Improvements (Optional)
 
@@ -554,11 +603,14 @@ These are optional features that can be added later if needed:
 
 **Focus:** Fix critical bugs and get payment working
 
-- **Cost:** $1,440 - $1,980
+- **Cost:** $2,370
 - **Timeline:** 1.5-3 weeks
 - **Best for:** Getting the app monetized and working properly
 - **What's included:**
   - Fix voice chat error
+  - Fix authentication session management
+  - Fix all broken trackers
+  - Enhance AI chat context awareness
   - Complete payment integration
   - Connect upgrade modals
   - Basic error handling
@@ -574,9 +626,9 @@ These are optional features that can be added later if needed:
 
 **Option A: Milestone-Based (Recommended)**
 
-- 30% upfront ($432 - $594 for Phase 1)
+- 30% upfront ($711 for Phase 1)
 - 40% at mid-point (after payment integration working)
-- 30% upon final delivery and acceptance ($432 - $594)
+- 30% upon final delivery and acceptance ($711)
 
 **Option B: Weekly Billing**
 
@@ -626,9 +678,14 @@ These are optional features that can be added later if needed:
    - Example: ElevenLabs API changes = discuss if significant work needed
 
 5. **Design/UI Changes**
+
    - Minor tweaks: **No extra cost**
    - Major redesigns: **Additional estimate** provided
    - Example: "Change button color" = free, "Redesign entire payment flow" = estimate
+
+6. **Small Changes During Development**
+   - Changes taking **less than 1 hour** are acceptable and included
+   - Changes taking **more than 1 hour** will be discussed and estimated separately
 
 ### Communication Process
 
@@ -643,6 +700,35 @@ These are optional features that can be added later if needed:
 - **No surprise charges:** All additional work discussed first
 - **Reasonable estimates:** Based on actual complexity, not inflated
 - **Timeline flexibility:** We'll work together to meet deadlines
+
+---
+
+## 🔧 Maintenance & Support (Post-Development)
+
+### Monthly Maintenance Package
+
+**Cost:** $250 USD/month
+
+**Includes:**
+
+- Bug fixes (time taken < 2 hours per bug)
+- System updates and patches
+- Keep the system running smoothly
+- Minor adjustments and tweaks
+- Technical support
+
+**What's NOT Included:**
+
+- New feature development (separate contract or hourly)
+- Major refactoring (separate estimate)
+- Changes taking more than 2 hours (discussed separately)
+
+**Terms:**
+
+- Monthly retainer paid in advance
+- Response time: Within 24-48 hours for urgent issues
+- Regular maintenance: Ongoing system health checks
+- Additional work beyond scope: Quoted separately at $30/hour
 
 ---
 
@@ -673,18 +759,10 @@ These are optional features that can be added later if needed:
 ## ✅ Next Steps
 
 1. **Review this assessment** and decide on scope
-2. **Approve the quote** for Phase 1 (required fixes)
-3. **Provide access** to necessary systems:
-   - Supabase project (for database and edge functions)
-   - Stripe account (for payment integration)
-   - Repository access (for code changes)
-4. **Share requirements:**
-   - Stripe API keys
-   - Subscription plan details (pricing, features)
-   - Token pricing structure
-   - ElevenLabs API key and Agent ID (to fix voice chat)
-5. **Agree on timeline** and payment terms
-6. **Begin development** once everything is approved
+2. **Provide access** to necessary systems (after quote approval)
+3. **Share requirements** for payment integration
+4. **Agree on timeline** and payment terms
+5. **Begin development** once everything is approved
 
 ---
 
@@ -709,16 +787,22 @@ Please let me know and I'll be happy to clarify.
 **Critical Issues Found:**
 
 1. ❌ Voice chat broken (401 error) - **Must fix**
-2. ❌ Payment integration missing - **Must add**
-3. ❌ Upgrade modal not connected - **Must connect**
-4. ⚠️ Some error handling gaps - **Should fix**
+2. ❌ Authentication session management broken - **Must fix**
+3. ❌ Multiple trackers broken (Medicine, Temperature, Appointments, Milestones) - **Must fix**
+4. ❌ AI chat not context-aware - **Must fix**
+5. ❌ Payment integration missing - **Must add**
+6. ❌ Upgrade modal not connected - **Must connect**
+7. ⚠️ Some error handling gaps - **Should fix**
 
 **Required Investment (Phase 1):**
 
-- **Cost:** $1,440 - $1,980 USD
+- **Cost:** $2,370 USD
 - **Timeline:** 1.5-3 weeks
 - **What you get:**
   - Voice chat fixed
+  - Authentication issues fixed
+  - All broken trackers fixed
+  - AI chat context-aware
   - Full payment integration
   - Premium features working
   - Upgrade flows connected
