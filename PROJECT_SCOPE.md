@@ -172,15 +172,17 @@ The following issues are **blocking production deployment** and need immediate a
 To make the application production-ready, the following work is required:
 
 1. **Fix Voice Chat** - Verify ElevenLabs API keys and fix authentication (3 hours)
-2. **Fix Authentication Session Management** - Proper session state synchronization (8 hours)
+2. **Fix Authentication Session Management** - Proper session state synchronization (6 hours)
 3. **Fix Broken Trackers** - Medicine, Temperature, Appointments, Milestones (4 hours)
-4. **Enhance AI Chat Context** - Include tracker data in prompts (6 hours)
-5. **Implement Payment Integration** - Stripe integration for subscriptions and tokens (35 hours)
-6. **Complete Premium Feature Gating** - Token deduction and access control (8 hours)
-7. **Improve Error Handling** - Comprehensive error handling (5 hours)
-8. **Security Review** - Verify RLS policies (6 hours)
+4. **Enhance AI Chat Context** - Include tracker data in prompts (5 hours)
+5. **Implement Payment Integration** - Stripe integration for subscriptions and tokens (30 hours)
+6. **Complete Premium Feature Gating** - Token deduction and access control (6 hours)
+7. **Improve Error Handling** - Comprehensive error handling (4 hours)
+8. **Security Review** - Verify RLS policies (5 hours)
 
-**Total Estimated Fix Time:** 79 hours
+**Total Estimated Fix Time:** 65 hours (at $30/hour = $1,950 USD)
+
+For detailed assessment and quote, see [Project Assessment & Quote.md](./Project%20Assessment%20&%20Quote.md)
 
 ---
 
