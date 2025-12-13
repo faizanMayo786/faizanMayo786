@@ -988,86 +988,6 @@ This project is a comprehensive, production-ready parenting assistant applicatio
 
 ---
 
-## 💰 Project Quote & Estimation
-
-### Development Cost Breakdown
-
-Based on the project scope and complexity, here's a detailed breakdown:
-
-#### Option 1: Fixed Price Quote
-
-**Total Project Value:** $28,000 - $36,000 USD
-
-**Breakdown:**
-
-- Core Infrastructure: $2,000 - $3,000
-- AI Chat System: $3,000 - $4,000
-- Voice Integration: $2,000 - $2,500
-- Tracker System (8 trackers): $6,000 - $7,500
-- Dashboard & Insights: $2,000 - $2,500
-- Appointment Management: $1,500 - $2,000
-- Profile & Setup: $2,500 - $3,000
-- Backend Infrastructure: $3,000 - $4,000
-- UI/UX Components: $4,000 - $5,000
-- Additional Features: $2,000 - $2,500
-
-**Assumptions:**
-
-- Hourly rate: $50-75/hour
-- Total hours: 560-720 hours
-- Includes: Development, basic testing, documentation
-
-#### Option 2: Hourly Rate
-
-**Rate:** $50-75/hour (depending on experience level)
-
-**Estimated Hours:** 560-720 hours
-
-**Total Range:** $28,000 - $54,000 USD
-
-### Ongoing Maintenance & Support
-
-**Monthly Maintenance:** $500 - $1,000/month
-
-- Bug fixes
-- Security updates
-- Minor feature enhancements
-- Technical support
-
-**Additional Services:**
-
-- New feature development: $75-100/hour
-- Major refactoring: $60-80/hour
-- Performance optimization: $60-80/hour
-- Comprehensive testing: $50-75/hour
-
-### Third-Party Service Costs (Client Responsibility)
-
-**Monthly Operating Costs:**
-
-- Supabase: $25-100/month (depending on usage)
-- Lovable AI: Variable (based on API usage)
-- ElevenLabs: Variable (based on voice usage)
-- Firebase: Variable (based on push notifications)
-- Domain & Hosting: $10-50/month
-
-**Estimated Monthly Operating Cost:** $50-300/month (depending on user base)
-
-### Payment Terms
-
-**Recommended Structure:**
-
-- 30% upfront (project initiation)
-- 40% at milestone completion (core features)
-- 30% upon final delivery and acceptance
-
-**Alternative:**
-
-- 50% upfront
-- 50% upon completion
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -1557,3 +1477,4 @@ If you need assistance:
 [Back to Top](#parenting-genie---ai-powered-parenting-assistant)
 
 </div>
+
