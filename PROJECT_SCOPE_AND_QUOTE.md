@@ -1,30 +1,241 @@
-# Parenting Genie - Project Scope, Breakdown & Quote
+# Parenting Genie - AI-Powered Parenting Assistant
 
-**Prepared for:** Client Review  
-**Date:** December 2024  
-**Project Type:** Full-Stack Parenting Assistant Application
+<div align="center">
 
----
+![Parenting Genie](https://img.shields.io/badge/Parenting-Genie-F13FBE?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-2.79-3ECF8E?style=for-the-badge&logo=supabase)
 
-## Executive Summary
+**Your Personal 24/7 AI Parenting Assistant**
 
-**Parenting Genie** is a comprehensive AI-powered parenting assistant application designed to support parents from pregnancy through age 5. The application features real-time tracking, AI chat assistance, voice activation, appointment management, and personalized insights.
+From pregnancy through age 5 • Voice-activated • Personalized guidance • Comprehensive tracking
 
-**Technology Stack:**
-- **Frontend:** React + TypeScript (Vite)
-- **Backend:** Supabase (PostgreSQL + Edge Functions)
-- **AI/ML:** Lovable AI Gateway (Gemini 2.5 Flash), ElevenLabs Voice
-- **Authentication:** Supabase Auth
-- **UI Framework:** shadcn/ui components
-- **State Management:** React Query (TanStack Query)
+[Features](#-features) • [Architecture](#-architecture) • [Getting Started](#-getting-started) • [Documentation](#-documentation)
 
-**Current Status:** Production-ready application with organized codebase structure
+</div>
 
 ---
 
-## 1. Project Architecture
+## 📋 Table of Contents
 
-### 1.1 System Architecture Diagram
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Architecture](#-architecture)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Development](#-development)
+- [API Documentation](#-api-documentation)
+- [Database Schema](#-database-schema)
+- [Deployment](#-deployment)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 🎯 Overview
+
+**Parenting Genie** is a comprehensive, AI-powered parenting assistant application designed to support parents from pregnancy through their child's first 5 years. The application combines real-time tracking, AI-powered chat assistance, voice activation, appointment management, and personalized insights to provide evidence-based guidance and support.
+
+### Key Highlights
+
+- 🤖 **AI-Powered Assistant**: 24/7 chat support with personalized responses using Gemini 2.5 Flash
+- 🎤 **Voice Activation**: Hands-free "Hey Genie" voice commands via ElevenLabs
+- 📊 **8 Comprehensive Trackers**: Feeding, Nappy, Sleep, Pump, Growth, Mood, Temperature, Medicine & Vaccines
+- 📅 **Appointment Management**: Schedule, track, and manage medical appointments
+- 📱 **Real-time Dashboard**: AI-generated insights and tracker summaries
+- 👤 **Multi-Child Support**: Track multiple children with personalized profiles
+- 🔔 **Smart Notifications**: Customizable reminders and quiet hours
+
+---
+
+## ✨ Features
+
+### 🤖 AI Chat Assistant (Genie)
+
+- **24/7 Availability**: Always-on parenting support
+- **Personalized Responses**: Context-aware advice based on user profile, children's ages, and preferences
+- **Multi-Conversation Support**: Manage multiple chat threads with localStorage persistence
+- **Streaming Responses**: Real-time AI response streaming for better UX
+- **Action Buttons**: Quick access to trackers from chat responses
+- **Message History**: Persistent conversation history
+
+**Response Format:**
+
+- Bullet points for easy reading
+- Maximum 150 words per response
+- 1-2 gentle emojis (🌸, 💕, 👶)
+- Empathetic and encouraging tone
+
+### 🎤 Voice Chat Integration
+
+- **Hands-Free Activation**: "Hey Genie" voice commands
+- **ElevenLabs Integration**: Conversational AI voice assistant
+- **Real-time Transcription**: Voice-to-text and text-to-voice
+- **Microphone Controls**: Volume and permission management
+
+### 📊 Tracker System (8 Trackers)
+
+#### 1. **Feeding Tracker**
+
+- Track breastfeeding, bottle, and formula feeding
+- Timer functionality for active feeds
+- Volume tracking (ml/oz)
+- Age-based feeding expectations
+- Health alerts (dehydration warnings)
+- Daily/weekly statistics
+
+#### 2. **Nappy Tracker**
+
+- Track wet, dirty, and both nappy changes
+- Stool type classification (normal, loose, constipated, mucus/blood)
+- Age-based expectations (wet/dirty counts)
+- Progress tracking vs. expected values
+- Stool log history with collapsible view
+- Health alerts (hydration, bowel movement warnings)
+
+#### 3. **Sleep Tracker**
+
+- Track sleep sessions with start/end times
+- Timer for active sleep sessions
+- Total sleep hours calculation
+- Age-based wake window recommendations
+- Sleep pattern visualization
+- Nap vs. night sleep tracking
+
+#### 4. **Pump Tracker**
+
+- Track pumping sessions
+- Volume tracking (ml/oz)
+- Left/right side tracking
+- Daily totals and averages
+- Pumping reminders
+- Supply tracking over time
+
+#### 5. **Growth Tracker**
+
+- Weight, height, head circumference tracking
+- Growth charts visualization
+- Percentile calculations
+- Age-based growth expectations
+- Historical growth data
+- Photo attachments
+
+#### 6. **Mood Tracker**
+
+- Baby mood tracking (happy, fussy, calm, etc.)
+- Parent mood tracking
+- Mood patterns over time
+- Correlation analysis
+- Daily mood summaries
+
+#### 7. **Temperature Tracker**
+
+- Temperature readings (Celsius/Fahrenheit)
+- Fever detection and alerts
+- Symptom tracking
+- Medication correlation
+- Temperature history
+- Health alerts for high temperatures
+
+#### 8. **Medicine & Vaccine Tracker**
+
+- Medicine schedule management
+- Dose tracking and reminders
+- Vaccine schedule tracking
+- Upcoming vaccine notifications
+- Medication history
+- Dosage calculations
+- Automated reminder system
+
+### 📅 Appointment Management
+
+- Create, edit, and delete appointments
+- Multiple appointment types (Pediatrician, MCHN, Lactation, Vaccine, etc.)
+- Reminder system with customizable notifications
+- Bring list management
+- Check-in functionality
+- Location and contact information
+- Past/upcoming appointment filtering
+
+### 📱 Dashboard & Insights
+
+- Real-time tracker summaries (all 8 trackers)
+- AI-generated daily insights based on tracker data
+- Next appointment display
+- Baby information card
+- Quick access to all trackers
+- Visual progress indicators
+- Personalized recommendations
+
+### 👤 Profile & Setup
+
+- Multi-step onboarding (4 steps)
+- Multi-child profile support
+- Born vs. unborn child tracking
+- Pregnancy information (for expecting parents)
+- Communication preferences
+- Notification settings
+- Profile picture uploads
+- Focus areas selection
+
+### 🎯 Additional Features
+
+- **Milestone Tracker**: Age-appropriate milestone tracking with photos
+- **Formula Calculator**: Formula preparation calculations
+- **Tips & Advice System**: Daily personalized tips based on tracker data
+- **Notification System**: Per-tracker notification toggles with quiet hours
+- **Premium Tools Integration**: Token-based access to external tools
+- **Dev Unlock Mode**: Development testing features
+
+---
+
+## 🛠 Technology Stack
+
+### Frontend
+
+- **Framework**: React 18.3+ with TypeScript 5.8
+- **Build Tool**: Vite 5.4
+- **Routing**: React Router v6.30
+- **State Management**:
+  - React Query (TanStack Query) v5.83 for server state
+  - React useState/useEffect for local state
+  - localStorage for persistence
+- **UI Library**: shadcn/ui (Radix UI primitives)
+- **Icons**: Lucide React v0.462
+- **Styling**: Tailwind CSS v3.4
+- **Date Handling**: date-fns v3.6
+- **Charts**: Recharts v2.15
+- **Forms**: React Hook Form v7.61 + Zod v3.25
+
+### Backend
+
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **API**: Supabase Edge Functions (Deno runtime)
+- **Real-time**: Supabase Realtime subscriptions
+- **Storage**: Supabase Storage for file uploads
+
+### External Services
+
+- **AI Chat**: Lovable AI Gateway → Google Gemini 2.5 Flash
+- **Voice AI**: ElevenLabs Conversational AI
+- **Push Notifications**: Firebase (configured)
+
+### Development Tools
+
+- **TypeScript**: Full type safety
+- **Path Aliases**: `@/` for src directory
+- **ESLint**: Code quality and linting
+- **PostCSS**: CSS processing
+- **Autoprefixer**: CSS vendor prefixing
+
+---
+
+## 🏗 Architecture
+
+### System Architecture
 
 ```mermaid
 graph TB
@@ -32,22 +243,22 @@ graph TB
         A[React Frontend<br/>TypeScript + Vite]
         B[Browser Storage<br/>LocalStorage]
     end
-    
+
     subgraph "API Layer"
         C[Supabase Client<br/>PostgreSQL]
         D[Edge Functions<br/>Deno Runtime]
     end
-    
+
     subgraph "External Services"
         E[Lovable AI Gateway<br/>Gemini 2.5 Flash]
         F[ElevenLabs<br/>Voice API]
         G[Firebase<br/>Push Notifications]
     end
-    
+
     subgraph "Database"
         H[(Supabase PostgreSQL<br/>30+ Tables)]
     end
-    
+
     A -->|HTTP/WebSocket| C
     A -->|Local Storage| B
     C -->|Query/Mutations| H
@@ -56,14 +267,14 @@ graph TB
     D -->|Voice Sessions| F
     D -->|Notifications| G
     D -->|Data Operations| H
-    
+
     style A fill:#F13FBE,color:#fff
     style H fill:#3ECF8E,color:#fff
     style E fill:#FF6B6B,color:#fff
     style F fill:#4ECDC4,color:#fff
 ```
 
-### 1.2 Application Flow Diagram
+### Application Flow
 
 ```mermaid
 sequenceDiagram
@@ -72,19 +283,19 @@ sequenceDiagram
     participant S as Supabase
     participant AI as AI Gateway
     participant V as ElevenLabs
-    
+
     U->>F: Access Application
     F->>S: Authenticate User
     S-->>F: Auth Token
-    
+
     U->>F: Start Chat Session
     F->>S: Get User Profile
     S-->>F: Profile Data
-    
+
     F->>AI: Send Message + Context
     AI-->>F: Stream Response
     F-->>U: Display Message
-    
+
     U->>F: Activate Voice Chat
     F->>S: Request Voice Session
     S->>V: Generate Signed URL
@@ -92,259 +303,477 @@ sequenceDiagram
     S-->>F: Return URL
     F->>V: Connect Voice Session
     V-->>F: Real-time Voice
-    
+
     U->>F: Log Tracker Data
     F->>S: Save to Database
     S->>S: Trigger Advice Function
     S-->>F: Personalized Insight
 ```
 
----
+### Component Architecture
 
-## 2. Feature Breakdown
+```mermaid
+graph TD
+    A[App.tsx] --> B[Index.tsx]
+    A --> C[Dashboard.tsx]
+    A --> D[Chat.tsx]
+    A --> E[Appointments.tsx]
+    A --> F[Setup.tsx]
 
-### 2.1 Core Features
+    B --> G[Hero.tsx]
+    B --> H[Features.tsx]
 
-#### **A. AI Chat Assistant (Genie)**
-- **Description:** 24/7 AI-powered parenting assistant with personalized responses
-- **Components:**
-  - `ChatInterface.tsx` - Main chat UI with conversation management
-  - `GenieChatWidget.tsx` - Floating chat widget
-  - `TypingIndicator.tsx` - Real-time typing animations
-  - `supabase/functions/chat/index.ts` - Chat API endpoint
+    C --> I[NextAppointmentCard.tsx]
+    C --> J[TrackerWorkspace.tsx]
 
-- **Features:**
-  - Multi-conversation support with localStorage persistence
-  - Streaming responses from AI
-  - Personalized system prompts based on user profile
-  - Context-aware responses (remembers children, preferences)
-  - Action buttons for quick tracker access
-  - Message history management
+    D --> K[ChatInterface.tsx]
+    K --> L[GenieChatWidget.tsx]
+    K --> M[TypingIndicator.tsx]
+    K --> N[ExploreToolsSidebar.tsx]
+    K --> O[PremiumToolsSidebar.tsx]
+    K --> P[TrackerWorkspace.tsx]
 
-- **Technical Details:**
-  - Uses Lovable AI Gateway with Gemini 2.5 Flash model
-  - Response format: Bullet points, max 150 words, 1-2 emojis
-  - Personalized based on: Parent name, communication style, children's ages, focus areas
+    P --> Q[FeedingTracker.tsx]
+    P --> R[NappyTracker.tsx]
+    P --> S[SleepTracker.tsx]
+    P --> T[PumpTracker.tsx]
+    P --> U[GrowthTracker.tsx]
+    P --> V[MoodTracker.tsx]
+    P --> W[TemperatureTracker.tsx]
+    P --> X[MedicineVaccineTracker.tsx]
 
-#### **B. Voice Chat Integration**
-- **Description:** Hands-free "Hey Genie" voice activation
-- **Components:**
-  - `hooks/useVoiceChat.tsx` - Voice chat hook
-  - `supabase/functions/elevenlabs-session/index.ts` - Voice session management
+    E --> Y[AddAppointmentDialog.tsx]
+    E --> Z[AppointmentDetailDialog.tsx]
 
-- **Features:**
-  - ElevenLabs conversational AI integration
-  - Microphone permission handling
-  - Real-time voice transcription
-  - Voice-activated commands
-  - Volume control
+    F --> AA[ProfileSetup.tsx]
 
-#### **C. Dashboard & Insights**
-- **Description:** Centralized view of all tracking data and insights
-- **Components:**
-  - `pages/Dashboard.tsx` - Main dashboard
-  - `supabase/functions/dashboard-insights/index.ts` - AI insights generation
+    style A fill:#F13FBE,color:#fff
+    style K fill:#4ECDC4,color:#fff
+    style P fill:#FF6B6B,color:#fff
+```
 
-- **Features:**
-  - Real-time tracker summaries (8 trackers)
-  - AI-generated daily insights
-  - Next appointment display
-  - Baby information card
-  - Quick access to all trackers
-  - Visual progress indicators
+### Data Flow
 
-#### **D. Tracker System (8 Trackers)**
+```mermaid
+graph LR
+    subgraph "User Interface"
+        UI[React Components]
+    end
 
-##### **1. Feeding Tracker**
-- **File:** `components/trackers/FeedingTracker.tsx`
-- **Features:**
-  - Track feeding sessions (breastfeeding, bottle, formula)
-  - Timer functionality for active feeds
-  - Track feeding method and volume
-  - Age-based feeding expectations
-  - Last feeding time display
-  - Daily/weekly statistics
-  - Health alerts (dehydration warnings)
+    subgraph "State Management"
+        LS[LocalStorage]
+        RQ[React Query]
+        ST[React State]
+    end
 
-##### **2. Nappy Tracker**
-- **File:** `components/trackers/NappyTracker.tsx`
-- **Features:**
-  - Track wet, dirty, and both nappy changes
-  - Stool type classification (normal, loose, constipated, mucus/blood)
-  - Age-based expectations (wet/dirty counts)
-  - Progress tracking vs. expected values
-  - Stool log history with collapsible view
-  - Health alerts (hydration, bowel movement warnings)
-  - Visual progress bars
+    subgraph "API Layer"
+        SC[Supabase Client]
+        EF[Edge Functions]
+    end
 
-##### **3. Sleep Tracker**
-- **File:** `components/trackers/SleepTracker.tsx`
-- **Features:**
-  - Track sleep sessions with start/end times
-  - Timer for active sleep sessions
-  - Total sleep hours calculation
-  - Age-based wake window recommendations
-  - Sleep pattern visualization
-  - Nap vs. night sleep tracking
-  - Sleep quality indicators
+    subgraph "External Services"
+        AI[Lovable AI]
+        VO[ElevenLabs]
+        DB[(PostgreSQL)]
+    end
 
-##### **4. Pump Tracker**
-- **File:** `components/trackers/PumpTracker.tsx`
-- **Features:**
-  - Track pumping sessions
-  - Volume tracking (ml/oz)
-  - Left/right side tracking
-  - Daily totals and averages
-  - Pumping reminders
-  - Supply tracking over time
+    UI --> LS
+    UI --> ST
+    UI --> RQ
+    RQ --> SC
+    SC --> DB
+    SC --> EF
+    EF --> AI
+    EF --> VO
+    EF --> DB
 
-##### **5. Growth Tracker**
-- **File:** `components/trackers/GrowthTracker.tsx`
-- **Features:**
-  - Weight, height, head circumference tracking
-  - Growth charts visualization
-  - Percentile calculations
-  - Age-based growth expectations
-  - Historical growth data
-  - Photo attachments
-
-##### **6. Mood Tracker**
-- **File:** `components/trackers/MoodTracker.tsx`
-- **Features:**
-  - Baby mood tracking (happy, fussy, calm, etc.)
-  - Parent mood tracking
-  - Mood patterns over time
-  - Correlation analysis
-  - Daily mood summaries
-
-##### **7. Temperature Tracker**
-- **File:** `components/trackers/TemperatureTracker.tsx`
-- **Features:**
-  - Temperature readings (Celsius/Fahrenheit)
-  - Fever detection and alerts
-  - Symptom tracking
-  - Medication correlation
-  - Temperature history
-  - Health alerts for high temperatures
-
-##### **8. Medicine & Vaccine Tracker**
-- **File:** `components/trackers/MedicineVaccineTracker.tsx`
-- **Features:**
-  - Medicine schedule management
-  - Dose tracking and reminders
-  - Vaccine schedule tracking
-  - Upcoming vaccine notifications
-  - Medication history
-  - Dosage calculations
-  - `supabase/functions/medicine-reminders/index.ts` - Automated reminders
-
-#### **E. Tracker Workspace**
-- **File:** `components/TrackerWorkspace.tsx`
-- **Features:**
-  - Unified interface for all 8 trackers
-  - View mode toggle (chat-focused, balanced, tracker-focused)
-  - Resizable divider between chat and tracker
-  - Day selection for historical data
-  - Mobile-responsive design
-  - URL-based tracker activation
-
-#### **F. Appointment Management**
-- **Files:**
-  - `pages/Appointments.tsx` - Main appointments page
-  - `components/appointments/AddAppointmentDialog.tsx` - Add appointment
-  - `components/appointments/AppointmentDetailDialog.tsx` - View/edit appointment
-  - `components/appointments/NextAppointmentCard.tsx` - Dashboard card
-
-- **Features:**
-  - Create, edit, delete appointments
-  - Appointment types (Pediatrician, MCHN, Lactation, Vaccine, etc.)
-  - Reminder system
-  - Bring list management
-  - Check-in functionality
-  - Location and contact information
-  - Past/upcoming appointment filtering
-
-#### **G. Profile Setup & Management**
-- **File:** `components/ProfileSetup.tsx`
-- **Features:**
-  - Multi-step onboarding (4 steps)
-  - Parent information collection
-  - Multi-child profile support
-  - Born vs. unborn child tracking
-  - Pregnancy information (for expecting parents)
-  - Communication preferences
-  - Notification settings
-  - Profile picture uploads
-  - Focus areas selection
-
-#### **H. Milestone Tracker**
-- **File:** `components/MilestoneTracker.tsx`
-- **Features:**
-  - Age-appropriate milestone tracking
-  - Achievement logging
-  - Photo attachments
-  - Milestone categories (motor, cognitive, social, etc.)
-  - Progress visualization
-
-#### **I. Notification System**
-- **File:** `components/NotificationSettings.tsx`
-- **Features:**
-  - Per-tracker notification toggles
-  - Quiet hours configuration
-  - Timezone support
-  - Push notification preferences
-  - Notification history
-
-#### **J. Premium Tools Integration**
-- **Files:**
-  - `components/ExploreToolsSidebar.tsx` - External tools access
-  - `components/PremiumToolsSidebar.tsx` - Premium features
-  - `components/DevUnlockBadge.tsx` - Development unlock
-
-- **Features:**
-  - Token-based access system
-  - Subscription status checking
-  - External tool integration (Baby Tracker, Lullaby Generator, Story Maker, etc.)
-  - Dev unlock mode for testing
-
-#### **K. Formula Calculator**
-- **File:** `components/FormulaCalculator.tsx`
-- **Features:**
-  - Formula preparation calculations
-  - Water and powder measurements
-  - Multiple bottle sizes
-  - Age-based recommendations
-
-#### **L. Tips & Advice System**
-- **Files:**
-  - `components/TipOfDay.tsx` - Full tip display
-  - `components/CompactTipOfDay.tsx` - Compact tip widget
-  - `lib/genieAdvice.ts` - Advice generation logic
-  - `supabase/functions/genie-advice/index.ts` - Automated advice triggers
-
-- **Features:**
-  - Daily personalized tips
-  - Context-aware advice based on tracker data
-  - Age-specific recommendations
-  - Focus area customization
+    style UI fill:#F13FBE,color:#fff
+    style DB fill:#3ECF8E,color:#fff
+    style AI fill:#FF6B6B,color:#fff
+```
 
 ---
 
-## 3. Database Schema
+## 📁 Project Structure
 
-### 3.1 Core Tables (30+ Tables)
+```
+genieaudit/
+├── App.tsx                          # Root component, routing configuration
+├── main.tsx                         # Application entry point
+├── index.html                       # HTML template
+├── index.css                        # Global styles
+│
+├── pages/                           # Page components
+│   ├── Index.tsx                    # Landing page
+│   ├── Dashboard.tsx                # Main dashboard with insights
+│   ├── Chat.tsx                     # Chat page wrapper
+│   ├── Appointments.tsx             # Appointments management page
+│   ├── Setup.tsx                    # Setup/onboarding page
+│   └── NotFound.tsx                 # 404 error page
+│
+├── components/                      # UI components
+│   ├── ChatInterface.tsx            # Main chat UI with conversation management
+│   ├── TrackerWorkspace.tsx         # Unified tracker container
+│   ├── ProfileSetup.tsx             # Multi-step profile setup
+│   ├── MilestoneTracker.tsx         # Milestone tracking component
+│   ├── FormulaCalculator.tsx        # Formula calculation tool
+│   ├── GenieChatWidget.tsx          # Floating chat widget
+│   ├── TipOfDay.tsx                 # Full tip display
+│   ├── CompactTipOfDay.tsx          # Compact tip widget
+│   ├── NotificationSettings.tsx     # Notification preferences
+│   ├── ExploreToolsSidebar.tsx      # External tools access
+│   ├── PremiumToolsSidebar.tsx      # Premium features sidebar
+│   ├── DevUnlockBadge.tsx           # Development unlock badge
+│   ├── Hero.tsx                     # Landing page hero section
+│   ├── Features.tsx                # Features showcase
+│   ├── ViewModeToggle.tsx           # View mode switcher
+│   ├── ResizableDivider.tsx         # Resizable panel divider
+│   ├── TypingIndicator.tsx          # Chat typing animation
+│   ├── StoolTypeDialog.tsx          # Stool type selection dialog
+│   │
+│   ├── trackers/                    # Tracker components
+│   │   ├── FeedingTracker.tsx       # Feeding session tracker
+│   │   ├── NappyTracker.tsx         # Nappy change tracker
+│   │   ├── SleepTracker.tsx         # Sleep session tracker
+│   │   ├── PumpTracker.tsx          # Breast pumping tracker
+│   │   ├── GrowthTracker.tsx        # Growth measurements tracker
+│   │   ├── MoodTracker.tsx          # Mood tracking component
+│   │   ├── TemperatureTracker.tsx   # Temperature & fever tracker
+│   │   └── MedicineVaccineTracker.tsx # Medicine & vaccine tracker
+│   │
+│   └── appointments/               # Appointment components
+│       ├── AddAppointmentDialog.tsx # Add new appointment
+│       ├── AppointmentDetailDialog.tsx # View/edit appointment
+│       └── NextAppointmentCard.tsx   # Dashboard appointment card
+│
+├── hooks/                           # Custom React hooks
+│   ├── useVoiceChat.tsx             # Voice chat integration hook
+│   ├── useTimeGreeting.tsx          # Time-based greeting hook
+│   ├── useDevUnlock.tsx             # Development unlock hook
+│   ├── use-mobile.tsx               # Mobile detection hook
+│   └── use-toast.ts                 # Toast notification hook
+│
+├── lib/                             # Utility libraries
+│   ├── bubbles.ts                   # Bubble animation effects
+│   ├── celebration.ts               # Celebration animations
+│   ├── floatingHearts.ts            # Heart animation effects
+│   ├── genieAdvice.ts               # Advice generation logic
+│   └── utils.ts                     # General utility functions
+│
+├── integrations/                   # Third-party integrations
+│   └── supabase/
+│       ├── client.ts                # Supabase client configuration
+│       └── types.ts                 # TypeScript database types (3000+ lines)
+│
+├── assets/                          # Static assets
+│   ├── tracker-*.png                # Tracker illustration images
+│   └── parenting-genie-logo.png     # Application logo
+│
+├── supabase/
+│   └── functions/                   # Supabase Edge Functions
+│       ├── chat/
+│       │   └── index.ts             # AI chat completion endpoint
+│       ├── dashboard-insights/
+│       │   └── index.ts             # AI insights generation
+│       ├── elevenlabs-session/
+│       │   └── index.ts             # Voice session management
+│       ├── genie-advice/
+│       │   └── index.ts             # Automated advice triggers
+│       └── medicine-reminders/
+│           └── index.ts             # Medicine reminder automation
+│
+├── package.json                     # Dependencies and scripts
+├── tsconfig.json                    # TypeScript configuration
+├── vite.config.ts                   # Vite build configuration
+├── tailwind.config.ts               # Tailwind CSS configuration
+├── postcss.config.js                # PostCSS configuration
+└── eslint.config.js                 # ESLint configuration
+```
+
+### Component Statistics
+
+- **Pages**: 6 components
+- **Main Components**: 18 components
+- **Tracker Components**: 8 components
+- **Appointment Components**: 3 components
+- **Custom Hooks**: 5 hooks
+- **Utility Libraries**: 5 files
+- **Backend Functions**: 5 edge functions
+- **Total**: ~46 major components/files
+- **Estimated Lines of Code**: 15,000+ lines
+- **TypeScript Coverage**: ~100%
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js**: v18+ (recommended: use [nvm](https://github.com/nvm-sh/nvm))
+- **npm** or **yarn** or **pnpm**
+- **Supabase Account**: For database and authentication
+- **API Keys**:
+  - Lovable AI API Key (for chat functionality)
+  - ElevenLabs API Key (for voice features)
+
+### Installation
+
+1. **Clone the repository**
+
+```bash
+git clone <YOUR_GIT_URL>
+cd genieaudit
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. **Set up environment variables**
+
+Create a `.env.local` file in the root directory:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_LOVABLE_API_KEY=your_lovable_api_key
+VITE_ELEVENLABS_API_KEY=your_elevenlabs_api_key
+```
+
+4. **Configure Supabase**
+
+- Set up your Supabase project
+- Run database migrations (if available)
+- Configure Row Level Security (RLS) policies
+- Set up Edge Functions with environment variables:
+  - `LOVABLE_API_KEY`
+  - `ELEVENLABS_API_KEY`
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+
+5. **Start the development server**
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+The application will be available at `http://localhost:8080`
+
+---
+
+## 💻 Development
+
+### Available Scripts
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Build for development
+npm run build:dev
+
+# Preview production build
+npm run preview
+
+# Run ESLint
+npm run lint
+```
+
+### Development Guidelines
+
+1. **TypeScript**: All code should be written in TypeScript with proper type definitions
+2. **Component Structure**: Follow the existing component organization pattern
+3. **Path Aliases**: Use `@/` prefix for imports from the src directory
+4. **Code Style**: Follow ESLint rules and existing code patterns
+5. **State Management**:
+   - Use React Query for server state
+   - Use React hooks for local state
+   - Use localStorage for persistence when appropriate
+
+### Project Configuration
+
+- **Path Aliases**: Configured in `vite.config.ts` and `tsconfig.json`
+  - `@/` → `./src/` (if src directory exists) or root directory
+- **TypeScript**: Strict mode disabled for flexibility (can be enabled)
+- **Tailwind CSS**: Configured with custom theme colors
+- **ESLint**: Configured with React and TypeScript rules
+
+---
+
+## 📡 API Documentation
+
+### Supabase Edge Functions
+
+#### 1. Chat Function
+
+**Endpoint**: `POST /functions/v1/chat`
+
+**Purpose**: AI chat completion with personalized responses
+
+**Request Body**:
+
+```typescript
+{
+  messages: Array<{
+    role: "user" | "assistant";
+    content: string;
+  }>;
+  userProfile: {
+    first_name?: string;
+    communication_style?: string;
+    children?: Array<{
+      name: string;
+      age_days: number;
+    }>;
+    focus_areas?: string[];
+  };
+}
+```
+
+**Response**: Streaming text response
+
+**Features**:
+
+- Personalized system prompts
+- Context injection (children, preferences)
+- Response format: Bullet points, max 150 words, 1-2 emojis
+
+#### 2. Dashboard Insights
+
+**Endpoint**: `POST /functions/v1/dashboard-insights`
+
+**Purpose**: Generate AI insights from tracker data
+
+**Request Body**:
+
+```typescript
+{
+  trackerData: {
+    feeding: {
+      count: number;
+      lastTime: string | null;
+    }
+    nappy: {
+      wet: number;
+      dirty: number;
+    }
+    sleep: {
+      totalHours: number;
+    }
+    mood: {
+      baby: string | null;
+      parent: string | null;
+    }
+    temperature: {
+      count: number;
+      hasFever: boolean;
+    }
+    medicine: {
+      dosesDue: number;
+      vaccinesUpcoming: number;
+    }
+    milestones: {
+      recent: number;
+      total: number;
+    }
+  }
+}
+```
+
+**Response**: Personalized insight message (max 2 sentences, 40 words)
+
+#### 3. ElevenLabs Session
+
+**Endpoint**: `POST /functions/v1/elevenlabs-session`
+
+**Purpose**: Create voice chat session
+
+**Request Body**:
+
+```typescript
+{
+  userProfile: {
+    first_name?: string;
+    communication_style?: string;
+    children?: Array<{ name: string; age_days: number }>;
+  };
+}
+```
+
+**Response**: Signed URL for ElevenLabs voice session
+
+#### 4. Genie Advice
+
+**Endpoint**: `POST /functions/v1/genie-advice`
+
+**Purpose**: Automated advice based on tracker events
+
+**Request Body**:
+
+```typescript
+{
+  logType: string;
+  logData: any;
+  userId: string;
+  babyAge: number;
+}
+```
+
+**Response**: Advice message or notification
+
+**Features**:
+
+- Age-based expectations
+- Quiet hours respect
+- Per-tracker notification preferences
+
+#### 5. Medicine Reminders
+
+**Endpoint**: `POST /functions/v1/medicine-reminders` (Cron-triggered)
+
+**Purpose**: Automated medicine and vaccine reminders
+
+**Response**: List of notifications to send
+
+**Features**:
+
+- Checks due medicine doses
+- Upcoming vaccine reminders (7-day window)
+- Quiet hours respect (10 PM - 7 AM)
+
+---
+
+## 🗄 Database Schema
+
+### Core Tables
 
 ```mermaid
 erDiagram
-    profiles ||--o{ children : has
-    profiles ||--o{ baby_logs : creates
-    profiles ||--o{ appointments : schedules
-    profiles ||--o{ genie_messages : receives
+    profiles ||--o{ children : "has"
+    profiles ||--o{ baby_logs : "creates"
+    profiles ||--o{ appointments : "schedules"
+    profiles ||--o{ genie_messages : "receives"
+    profiles ||--o{ med_plans : "has"
+    profiles ||--o{ vaccines : "schedules"
+
     children ||--o{ baby_logs : "logs for"
-    children ||--o{ milestones : achieves
-    children ||--o{ med_plans : "has medication"
-    children ||--o{ vaccines : "scheduled for"
-    
+    children ||--o{ milestones : "achieves"
+    children ||--o{ med_plans : "medication for"
+    children ||--o{ vaccines : "vaccines for"
+
     profiles {
         string user_id PK
         string first_name
@@ -359,7 +788,7 @@ erDiagram
         int tool_tokens
         string subscription_status
     }
-    
+
     children {
         string id PK
         string user_id FK
@@ -370,7 +799,7 @@ erDiagram
         json focus_areas
         json feeding_style
     }
-    
+
     baby_logs {
         string id PK
         string user_id FK
@@ -380,7 +809,7 @@ erDiagram
         json data
         int baby_age_days
     }
-    
+
     appointments {
         string id PK
         string user_id FK
@@ -392,7 +821,7 @@ erDiagram
         json reminders
         json bring_list
     }
-    
+
     genie_messages {
         string id PK
         string user_id FK
@@ -401,7 +830,7 @@ erDiagram
         string action_type
         json action_data
     }
-    
+
     med_plans {
         string id PK
         string user_id FK
@@ -410,7 +839,7 @@ erDiagram
         boolean active
         date start_date
     }
-    
+
     vaccines {
         string id PK
         string user_id FK
@@ -420,498 +849,131 @@ erDiagram
     }
 ```
 
-### 3.2 Key Database Features
+### Key Database Features
 
-- **User Authentication:** Supabase Auth with email/password and OAuth
-- **Row Level Security (RLS):** User-specific data access
-- **Real-time Subscriptions:** Live updates for tracker data
-- **Database Functions:** Automated calculations and triggers
-- **Storage:** File uploads for profile pictures, milestone photos
-
----
-
-## 4. Backend Functions (Supabase Edge Functions)
-
-### 4.1 Function Breakdown
-
-#### **A. Chat Function** (`supabase/functions/chat/index.ts`)
-- **Purpose:** AI chat completion endpoint
-- **Input:** Messages array, user profile
-- **Output:** Streaming AI responses
-- **Features:**
-  - Personalized system prompts
-  - Context injection (children, preferences)
-  - Rate limiting handling
-  - Error handling
-
-#### **B. Dashboard Insights** (`supabase/functions/dashboard-insights/index.ts`)
-- **Purpose:** Generate AI insights from tracker data
-- **Input:** Tracker data summary
-- **Output:** Personalized insight message
-- **Features:**
-  - Analyzes all tracker data
-  - Prioritizes urgent matters
-  - Generates encouraging tips
-  - Max 2 sentences, 40 words
-
-#### **C. ElevenLabs Session** (`supabase/functions/elevenlabs-session/index.ts`)
-- **Purpose:** Create voice chat session
-- **Input:** User profile
-- **Output:** Signed URL for ElevenLabs
-- **Features:**
-  - Personalized voice agent instructions
-  - Session management
-  - Security token generation
-
-#### **D. Genie Advice** (`supabase/functions/genie-advice/index.ts`)
-- **Purpose:** Automated advice based on tracker events
-- **Input:** Log type, log data, user ID, baby age
-- **Output:** Advice message or notification
-- **Features:**
-  - Age-based expectations (feeding intervals, wake windows, nappy counts)
-  - Quiet hours respect
-  - Per-tracker notification preferences
-  - Action triggers (start feeding, start sleep, etc.)
-
-#### **E. Medicine Reminders** (`supabase/functions/medicine-reminders/index.ts`)
-- **Purpose:** Automated medicine and vaccine reminders
-- **Input:** None (scheduled cron job)
-- **Output:** Notification list
-- **Features:**
-  - Checks due medicine doses
-  - Upcoming vaccine reminders (7-day window)
-  - Quiet hours respect (10 PM - 7 AM)
-  - Integration ready for push notifications
+- **Row Level Security (RLS)**: User-specific data access
+- **Real-time Subscriptions**: Live updates for tracker data
+- **Database Functions**: Automated calculations and triggers
+- **Storage**: File uploads for profile pictures, milestone photos
+- **30+ Tables**: Comprehensive data model for all features
 
 ---
 
-## 5. Component Structure
+## 🚢 Deployment
 
-### 5.1 File Organization
+### Build for Production
 
-```
-genieaudit/
-├── App.tsx                          # Root component, routing
-├── pages/                           # Page components
-│   ├── Index.tsx                    # Landing page
-│   ├── Dashboard.tsx                # Main dashboard
-│   ├── Chat.tsx                     # Chat page wrapper
-│   ├── Appointments.tsx             # Appointments page
-│   ├── Setup.tsx                    # Setup/onboarding
-│   └── NotFound.tsx                 # 404 page
-│
-├── components/                     # UI components
-│   ├── ChatInterface.tsx            # Main chat UI
-│   ├── TrackerWorkspace.tsx         # Tracker container
-│   ├── ProfileSetup.tsx             # Profile setup
-│   ├── MilestoneTracker.tsx         # Milestones
-│   ├── FormulaCalculator.tsx        # Formula calc
-│   ├── GenieChatWidget.tsx          # Floating widget
-│   ├── TipOfDay.tsx                 # Tips display
-│   ├── NotificationSettings.tsx     # Notifications
-│   ├── ExploreToolsSidebar.tsx      # External tools
-│   ├── PremiumToolsSidebar.tsx      # Premium features
-│   │
-│   ├── trackers/                    # Tracker components
-│   │   ├── FeedingTracker.tsx
-│   │   ├── NappyTracker.tsx
-│   │   ├── SleepTracker.tsx
-│   │   ├── PumpTracker.tsx
-│   │   ├── GrowthTracker.tsx
-│   │   ├── MoodTracker.tsx
-│   │   ├── TemperatureTracker.tsx
-│   │   └── MedicineVaccineTracker.tsx
-│   │
-│   └── appointments/                # Appointment components
-│       ├── AddAppointmentDialog.tsx
-│       ├── AppointmentDetailDialog.tsx
-│       └── NextAppointmentCard.tsx
-│
-├── hooks/                           # Custom React hooks
-│   ├── useVoiceChat.tsx             # Voice chat hook
-│   ├── useTimeGreeting.tsx           # Time-based greetings
-│   └── useDevUnlock.tsx              # Dev unlock feature
-│
-├── lib/                             # Utility libraries
-│   ├── bubbles.ts                   # Animation effects
-│   ├── celebration.ts               # Celebration animations
-│   ├── floatingHearts.ts            # Heart animations
-│   ├── genieAdvice.ts               # Advice logic
-│   └── utils.ts                     # General utilities
-│
-├── integrations/                    # Third-party integrations
-│   └── supabase/
-│       ├── client.ts                # Supabase client
-│       └── types.ts                # TypeScript types (3000+ lines)
-│
-└── supabase/
-    └── functions/                   # Edge functions
-        ├── chat/index.ts
-        ├── dashboard-insights/index.ts
-        ├── elevenlabs-session/index.ts
-        ├── genie-advice/index.ts
-        └── medicine-reminders/index.ts
+```bash
+npm run build
 ```
 
-### 5.2 Component Count
+This creates an optimized production build in the `dist/` directory.
 
-- **Pages:** 6 components
-- **Main Components:** 18 components
-- **Tracker Components:** 8 components
-- **Appointment Components:** 3 components
-- **Hooks:** 3 custom hooks
-- **Utility Libraries:** 5 files
-- **Backend Functions:** 5 edge functions
-- **Total:** ~46 major components/files
+### Deployment Options
 
----
+1. **Lovable Platform**:
 
-## 6. Technology Stack Details
+   - Use Lovable's built-in deployment
+   - Navigate to Share → Publish in Lovable dashboard
 
-### 6.1 Frontend Stack
-- **Framework:** React 18+ with TypeScript
-- **Build Tool:** Vite
-- **Routing:** React Router v6
-- **State Management:** 
-  - React Query (TanStack Query) for server state
-  - React useState/useEffect for local state
-  - localStorage for persistence
-- **UI Library:** shadcn/ui (Radix UI primitives)
-- **Icons:** Lucide React
-- **Styling:** Tailwind CSS
-- **Date Handling:** date-fns
-- **Animations:** CSS animations + custom libraries
+2. **Vercel**:
 
-### 6.2 Backend Stack
-- **Database:** Supabase (PostgreSQL)
-- **Authentication:** Supabase Auth
-- **API:** Supabase Edge Functions (Deno runtime)
-- **Real-time:** Supabase Realtime subscriptions
-- **Storage:** Supabase Storage
+   ```bash
+   npm install -g vercel
+   vercel
+   ```
 
-### 6.3 External Services
-- **AI Chat:** Lovable AI Gateway → Gemini 2.5 Flash
-- **Voice AI:** ElevenLabs Conversational AI
-- **Push Notifications:** Firebase (configured, not fully implemented)
+3. **Netlify**:
 
-### 6.4 Development Tools
-- **TypeScript:** Full type safety
-- **Path Aliases:** `@/` for src directory
-- **Code Organization:** Feature-based folder structure
+   - Connect repository to Netlify
+   - Set build command: `npm run build`
+   - Set publish directory: `dist`
 
----
+4. **Custom Server**:
+   - Serve the `dist/` directory with any static file server
+   - Configure environment variables on the server
 
-## 7. Scope of Work
+### Environment Variables
 
-### 7.1 Code Review & Analysis
+Ensure all environment variables are set in your deployment platform:
 
-#### **A. Architecture Review**
-- ✅ Review current folder structure (COMPLETED - files organized)
-- Review component architecture and patterns
-- Analyze state management approach
-- Evaluate performance optimization opportunities
-- Review security implementations (RLS, authentication)
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `VITE_LOVABLE_API_KEY` (if needed client-side)
+- `VITE_ELEVENLABS_API_KEY` (if needed client-side)
 
-#### **B. Code Quality Assessment**
-- TypeScript type safety review
-- Component reusability analysis
-- Code duplication identification
-- Error handling patterns review
-- Testing coverage assessment (if tests exist)
+### Supabase Edge Functions Deployment
 
-#### **C. Database Schema Review**
-- Table structure optimization
-- Index analysis for performance
-- Relationship integrity review
-- Query performance assessment
-- Migration strategy review
+Deploy edge functions using Supabase CLI:
 
-#### **D. API/Backend Review**
-- Edge function performance
-- Error handling in functions
-- Rate limiting implementation
-- Security best practices
-- API response optimization
+```bash
+supabase functions deploy chat
+supabase functions deploy dashboard-insights
+supabase functions deploy elevenlabs-session
+supabase functions deploy genie-advice
+supabase functions deploy medicine-reminders
+```
 
-#### **E. Frontend Review**
-- Component performance (React.memo, useMemo, useCallback)
-- Bundle size optimization
-- Loading states and error boundaries
-- Accessibility compliance
-- Mobile responsiveness review
-
-#### **F. Integration Review**
-- AI service integration patterns
-- Voice chat implementation review
-- External tool integration
-- Third-party service error handling
-
-### 7.2 Documentation
-
-#### **A. Technical Documentation**
-- API documentation for edge functions
-- Component documentation
-- Database schema documentation
-- Integration guides
-- Deployment documentation
-
-#### **B. Code Documentation**
-- Inline code comments where needed
-- Function/method documentation
-- Complex logic explanations
-- Architecture decision records (ADRs)
-
-### 7.3 Optimization Opportunities
-
-#### **A. Performance Optimization**
-- Database query optimization
-- Component rendering optimization
-- Bundle size reduction
-- Image optimization
-- Caching strategies
-
-#### **B. User Experience Enhancement**
-- Loading state improvements
-- Error message improvements
-- Animation performance
-- Mobile UX enhancements
-- Accessibility improvements
-
-#### **C. Code Quality Improvements**
-- Refactoring opportunities
-- Type safety improvements
-- Error handling standardization
-- Code organization improvements
+Set environment variables for each function in Supabase dashboard.
 
 ---
 
-## 8. Deliverables
+## 🤝 Contributing
 
-### 8.1 Phase 1: Comprehensive Review & Analysis
+### Development Workflow
 
-**Deliverable 1.1: Architecture Review Report**
-- System architecture analysis
-- Component structure review
-- State management evaluation
-- Performance bottlenecks identification
-- Security assessment
+1. Create a feature branch from `main`
+2. Make your changes following the code style
+3. Test your changes thoroughly
+4. Submit a pull request with a clear description
 
-**Deliverable 1.2: Code Quality Report**
-- TypeScript type safety analysis
-- Component reusability assessment
-- Code duplication report
-- Error handling review
-- Best practices compliance
+### Code Style
 
-**Deliverable 1.3: Database Review Report**
-- Schema optimization recommendations
-- Index performance analysis
-- Query optimization suggestions
-- Migration recommendations
+- Use TypeScript for all new code
+- Follow existing component patterns
+- Use functional components with hooks
+- Add proper TypeScript types
+- Follow ESLint rules
 
-**Deliverable 1.4: API/Backend Review Report**
-- Edge function performance analysis
-- Error handling assessment
-- Security review
-- Rate limiting evaluation
+### Testing
 
-**Deliverable 1.5: Frontend Review Report**
-- Component performance analysis
-- Bundle size analysis
-- Mobile responsiveness review
-- Accessibility audit
-
-**Deliverable 1.6: Integration Review Report**
-- AI service integration review
-- Voice chat implementation review
-- External service integration analysis
-
-### 8.2 Phase 2: Documentation
-
-**Deliverable 2.1: Technical Documentation**
-- Complete API documentation
-- Component library documentation
-- Database schema documentation
-- Integration guides
-
-**Deliverable 2.2: Code Documentation**
-- Inline documentation improvements
-- Architecture decision records
-- Complex logic explanations
-
-### 8.3 Phase 3: Optimization Recommendations
-
-**Deliverable 3.1: Performance Optimization Plan**
-- Detailed optimization recommendations
-- Implementation priority matrix
-- Expected performance gains
-- Implementation estimates
-
-**Deliverable 3.2: Code Quality Improvement Plan**
-- Refactoring recommendations
-- Type safety improvements
-- Error handling standardization
-- Code organization improvements
+- Test all user flows
+- Verify mobile responsiveness
+- Check accessibility
+- Test with different user profiles
 
 ---
 
-## 9. Timeline & Estimates
+## 📄 License
 
-### 9.1 Phase 1: Comprehensive Review (Week 1-2)
-
-| Task | Estimated Hours | Description |
-|------|----------------|-------------|
-| Architecture Review | 16 hours | System architecture, component structure, state management |
-| Code Quality Assessment | 12 hours | TypeScript review, component analysis, code duplication |
-| Database Review | 10 hours | Schema analysis, query optimization, index review |
-| API/Backend Review | 10 hours | Edge functions, error handling, security |
-| Frontend Review | 12 hours | Performance, bundle size, mobile, accessibility |
-| Integration Review | 8 hours | AI services, voice chat, external tools |
-| **Subtotal** | **68 hours** | |
-
-### 9.2 Phase 2: Documentation (Week 3)
-
-| Task | Estimated Hours | Description |
-|------|----------------|-------------|
-| Technical Documentation | 16 hours | API docs, component docs, database docs |
-| Code Documentation | 8 hours | Inline comments, ADRs, explanations |
-| **Subtotal** | **24 hours** | |
-
-### 9.3 Phase 3: Optimization Recommendations (Week 4)
-
-| Task | Estimated Hours | Description |
-|------|----------------|-------------|
-| Performance Optimization Plan | 12 hours | Detailed recommendations with priorities |
-| Code Quality Improvement Plan | 8 hours | Refactoring recommendations, improvements |
-| **Subtotal** | **20 hours** | |
-
-### 9.4 Total Estimated Hours
-
-**Total: 112 hours**
-
-**Timeline: 4 weeks** (assuming 28 hours/week availability)
+[Add your license information here]
 
 ---
 
-## 10. Pricing Structure
+## 📞 Support
 
-### 10.1 Hourly Rate Options
+For questions, issues, or feature requests:
 
-**Option A: Standard Rate**
-- **Rate:** $X per hour (to be determined)
-- **Total Estimate:** 112 hours × $X = **$X,XXX**
-
-**Option B: Fixed Price Package**
-- **Phase 1 (Review):** $X,XXX (68 hours)
-- **Phase 2 (Documentation):** $X,XXX (24 hours)
-- **Phase 3 (Optimization Plan):** $X,XXX (20 hours)
-- **Total Fixed Price:** **$X,XXX**
-
-### 10.2 Payment Structure
-
-**Recommended Payment Schedule:**
-- **30%** upon project initiation
-- **40%** upon completion of Phase 1 (Review)
-- **30%** upon final delivery (Phases 2 & 3)
-
-### 10.3 Additional Services (Optional)
-
-- **Implementation of Optimizations:** Quoted separately based on recommendations
-- **Additional Testing:** $X per hour
-- **Emergency Support:** $X per hour (outside normal hours)
-- **Extended Documentation:** $X per hour
+- **Email**: [Your Email]
+- **Documentation**: [Documentation URL]
+- **Issues**: [GitHub Issues URL]
 
 ---
 
-## 11. Assumptions & Exclusions
+## 🙏 Acknowledgments
 
-### 11.1 Assumptions
-
-1. **Access Provided:**
-   - Full codebase access (GitHub/GitLab repository)
-   - Supabase project access (read-only for review)
-   - Development/staging environment access
-   - Documentation of current deployment process
-
-2. **Current State:**
-   - Application is in production or near-production state
-   - Basic functionality is working
-   - No critical bugs blocking review
-
-3. **Scope:**
-   - Review and analysis only (no implementation)
-   - Documentation creation
-   - Optimization recommendations
-
-### 11.2 Exclusions
-
-1. **Not Included:**
-   - Implementation of optimizations
-   - Bug fixes (unless critical security issues)
-   - Feature development
-   - Testing implementation
-   - Deployment changes
-   - Third-party service configuration changes
-
-2. **Out of Scope:**
-   - UI/UX redesign
-   - Major architecture changes
-   - New feature development
-   - Performance optimization implementation
-   - Database migration execution
+- **Lovable AI**: For AI chat integration
+- **ElevenLabs**: For voice AI capabilities
+- **Supabase**: For backend infrastructure
+- **shadcn/ui**: For UI component library
+- **React Community**: For excellent tooling and libraries
 
 ---
 
-## 12. Next Steps
+<div align="center">
 
-### 12.1 Client Action Items
+**Built with ❤️ for parents everywhere**
 
-1. **Review this scope document**
-2. **Confirm access requirements:**
-   - Repository access (GitHub/GitLab)
-   - Supabase project access
-   - Environment credentials (if needed)
-   - Documentation access
+[Back to Top](#parenting-genie---ai-powered-parenting-assistant)
 
-3. **Confirm pricing and payment terms**
-4. **Provide project timeline preferences**
-5. **Identify priority areas** (if any specific focus needed)
-
-### 12.2 Project Initiation
-
-Upon approval:
-1. **Kickoff Meeting:** 1-hour session to align on priorities
-2. **Access Setup:** Repository and environment access
-3. **Review Commencement:** Begin Phase 1 analysis
-
----
-
-## 13. Contact & Questions
-
-For questions or clarifications regarding this scope:
-- **Email:** [Your Email]
-- **Response Time:** Within 24 hours
-
----
-
-## Appendix A: Key Metrics
-
-### Application Statistics
-- **Total Components:** ~46 major components
-- **Database Tables:** 30+ tables
-- **Edge Functions:** 5 functions
-- **Tracker Types:** 8 trackers
-- **Lines of Code (Estimated):** 15,000+ lines
-- **TypeScript Coverage:** ~100%
-
-### Feature Complexity
-- **High Complexity:** AI Chat, Voice Integration, Tracker System
-- **Medium Complexity:** Dashboard, Appointments, Profile Management
-- **Low Complexity:** UI Components, Utilities, Animations
-
----
-
-**Document Version:** 1.0  
-**Last Updated:** December 2024  
-**Status:** For Client Review
-
+</div>
