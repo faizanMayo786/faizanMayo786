@@ -24,8 +24,6 @@ From pregnancy through age 5 • Voice-activated • Personalized guidance • C
 - [Features](#-features)
 - [Technology Stack](#-technology-stack)
 - [Architecture](#-architecture)
-- [Project Structure](#-project-structure)
-- [Project Scope & Breakdown](#-project-scope--breakdown)
 - [Getting Started](#-getting-started)
 - [Development](#-development)
 - [API Documentation](#-api-documentation)
@@ -1390,4 +1388,5 @@ If you need assistance:
 [Back to Top](#parenting-genie---ai-powered-parenting-assistant)
 
 </div>
+
 
