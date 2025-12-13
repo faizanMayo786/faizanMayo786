@@ -20,6 +20,7 @@ From pregnancy through age 5 • Voice-activated • Personalized guidance • C
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Current Status & Known Issues](#️-current-status--known-issues)
 - [Features](#-features)
 - [Technology Stack](#-technology-stack)
 - [Architecture](#-architecture)
@@ -61,6 +62,132 @@ Think of Parenting Genie as your personal parenting assistant that:
 
 ---
 
+## ⚠️ Current Status & Known Issues
+
+### Project Status
+
+**Overall Completion:** ~85% complete
+
+The application has most core features implemented and functional. However, there are several critical issues that need to be addressed before the app can be fully production-ready.
+
+### ✅ Working Features
+
+The following features are **fully functional**:
+
+- ✅ Core application infrastructure
+- ✅ AI chat system with streaming responses
+- ✅ 6 out of 8 trackers (Feeding, Nappy, Sleep, Pump, Growth, Mood)
+- ✅ Dashboard with insights
+- ✅ Profile & setup system
+- ✅ Basic UI/UX components
+- ✅ Multi-conversation chat support
+- ✅ Message history persistence
+
+### ❌ Critical Issues (Must Fix)
+
+The following issues are **blocking production deployment** and need immediate attention:
+
+#### 1. Voice Chat - 401 Authentication Error
+
+- **Status:** ❌ Broken
+- **Error:** Returns 401 "Failed to get signed URL: 401"
+- **Location:** `supabase/functions/elevenlabs-session/index.ts:90`
+- **Root Cause:** Missing or invalid ElevenLabs API key/Agent ID in environment variables
+- **Impact:** Voice chat feature completely non-functional
+- **Priority:** Critical
+
+#### 2. Authentication Session Management
+
+- **Status:** ❌ Broken
+- **Issue:** Login session not properly managed and rendered throughout app
+- **Affected Features:**
+  - Appointments creation (shows "Not authenticated" error even when logged in)
+  - Milestone tracker (cannot save - authentication error)
+  - Temperature tracker (shows "sign in required" when logged in)
+  - Medicine & Vaccine tracker (save button doesn't work)
+- **Root Cause:** Session state not properly synchronized, auth checks failing
+- **Impact:** Multiple features broken, users cannot save data
+- **Priority:** Critical
+
+#### 3. Medicine & Vaccine Tracker Issues
+
+- **Status:** ❌ Broken
+- **Issues:**
+  - Save button does nothing when pressed
+  - Vaccine name dropdown not populating
+- **Location:** `components/trackers/MedicineVaccineTracker.tsx`
+- **Impact:** Users cannot add medicines or vaccines
+- **Priority:** High
+
+#### 4. AI Chat - Context Awareness Missing
+
+- **Status:** ⚠️ Partially Working
+- **Issue:** AI gives generic answers instead of context-aware responses
+- **Problem:** Cannot access user profile, tracker data, or progress
+- **Example:** When asked "tell me my feeding tracker report", responds with generic message saying it can't access data
+- **Location:** `supabase/functions/chat/index.ts`
+- **Root Cause:** System prompts not properly including tracker data and user context
+- **Impact:** Poor user experience, AI not providing personalized help
+- **Priority:** High
+
+#### 5. Payment Integration Missing
+
+- **Status:** ❌ Not Implemented
+- **Issues:**
+  - After 5 messages, upgrade modal shows but "Create Profile" and payment buttons don't work
+  - Token modal shows "Buy Tokens" and "Subscribe" buttons but no actual payment integration
+- **Location:**
+  - `components/ChatInterface.tsx:1098-1134` (upgrade modal)
+  - `components/ExploreToolsSidebar.tsx:195-206` (token modal)
+- **Impact:** Users can't upgrade after free messages, can't purchase tokens/subscriptions
+- **Priority:** Critical (for monetization)
+
+### ⚠️ Medium Priority Issues
+
+#### 6. Error Handling - Edge Cases
+
+- **Issue:** Some API calls may not have comprehensive error handling
+- **Impact:** Users may see unhandled errors
+- **Priority:** Medium
+
+#### 7. Database RLS Policies
+
+- **Issue:** Need to verify all Row Level Security policies are properly configured
+- **Impact:** Security concerns
+- **Priority:** High
+
+### 📊 Tracker Status Breakdown
+
+| Tracker                    | Status     | Notes                         |
+| -------------------------- | ---------- | ----------------------------- |
+| Feeding Tracker            | ✅ Working | Fully functional              |
+| Nappy Tracker              | ✅ Working | Fully functional              |
+| Sleep Tracker              | ✅ Working | Fully functional              |
+| Pump Tracker               | ✅ Working | Fully functional              |
+| Growth Tracker             | ✅ Working | Fully functional              |
+| Mood Tracker               | ✅ Working | Fully functional              |
+| Temperature Tracker        | ❌ Broken  | Authentication issue          |
+| Medicine & Vaccine Tracker | ❌ Broken  | Save button + dropdown issues |
+
+### 🔧 Required Fixes Summary
+
+To make the application production-ready, the following work is required:
+
+1. **Fix Voice Chat** - Verify ElevenLabs API keys and fix authentication (3 hours)
+2. **Fix Authentication Session Management** - Proper session state synchronization (8 hours)
+3. **Fix Broken Trackers** - Medicine, Temperature, Appointments, Milestones (4 hours)
+4. **Enhance AI Chat Context** - Include tracker data in prompts (6 hours)
+5. **Implement Payment Integration** - Stripe integration for subscriptions and tokens (35 hours)
+6. **Complete Premium Feature Gating** - Token deduction and access control (8 hours)
+7. **Improve Error Handling** - Comprehensive error handling (5 hours)
+8. **Security Review** - Verify RLS policies (6 hours)
+
+**Total Estimated Fix Time:** 79 hours
+
+For detailed assessment and quote, see [PROJECT_ASSESSMENT.md](./PROJECT_ASSESSMENT.md)
+
+---
+
 ## ✨ Features
 
 ### 🤖 AI Chat Assistant (Genie)
@@ -95,6 +222,8 @@ The heart of Parenting Genie is an intelligent AI assistant that provides person
 - Context injection from tracker data and children's information
 - Streaming response handling for real-time updates
 
+**⚠️ Current Status:** AI chat is functional but **lacks full context awareness**. It currently gives generic answers instead of accessing user tracker data. See [Known Issues](#️-current-status--known-issues) for details.
+
 ### 🎤 Voice Chat Integration
 
 Hands-free interaction with Genie using voice commands.
@@ -112,6 +241,8 @@ Hands-free interaction with Genie using voice commands.
 - Ask questions while feeding or holding your baby
 - Log tracker data using voice commands
 - Get advice while driving or multitasking
+
+**⚠️ Current Status:** This feature is currently **broken** due to a 401 authentication error. See [Known Issues](#️-current-status--known-issues) for details.
 
 ### 📊 Tracker System (8 Comprehensive Trackers)
 
@@ -247,6 +378,8 @@ Monitor body temperature with fever detection and health alerts.
 - **Health Alerts**: Immediate alerts for high temperatures
 - **Temperature Trends**: Visualize temperature patterns over time
 
+**⚠️ Current Status:** This tracker is currently **broken** due to authentication session management issues. See [Known Issues](#️-current-status--known-issues) for details.
+
 #### 8. **Medicine & Vaccine Tracker**
 
 Comprehensive medication and vaccination schedule management.
@@ -262,6 +395,8 @@ Comprehensive medication and vaccination schedule management.
 - **Automated Reminder System**: Smart reminders for due doses
 - **Medicine Plans**: Create recurring medication plans
 - **Vaccine Status**: Track vaccine completion status
+
+**⚠️ Current Status:** This tracker is currently **broken**. Save button doesn't work and vaccine dropdown doesn't populate. See [Known Issues](#️-current-status--known-issues) for details.
 
 ### 📅 Appointment Management
 
@@ -283,6 +418,8 @@ Comprehensive appointment scheduling and management system.
 - **Location and Contact Information**: Store provider details
 - **Past/Upcoming Filtering**: Filter appointments by date
 - **Next Appointment Display**: Quick view on dashboard
+
+**⚠️ Current Status:** Appointment creation is currently **broken** due to authentication session management issues. See [Known Issues](#️-current-status--known-issues) for details.
 
 ### 📱 Dashboard & Insights
 
@@ -988,6 +1125,86 @@ This project is a comprehensive, production-ready parenting assistant applicatio
 
 ---
 
+## 💰 Project Quote & Estimation
+
+### Development Cost Breakdown
+
+Based on the project scope and complexity, here's a detailed breakdown:
+
+#### Option 1: Fixed Price Quote
+
+**Total Project Value:** $28,000 - $36,000 USD
+
+**Breakdown:**
+
+- Core Infrastructure: $2,000 - $3,000
+- AI Chat System: $3,000 - $4,000
+- Voice Integration: $2,000 - $2,500
+- Tracker System (8 trackers): $6,000 - $7,500
+- Dashboard & Insights: $2,000 - $2,500
+- Appointment Management: $1,500 - $2,000
+- Profile & Setup: $2,500 - $3,000
+- Backend Infrastructure: $3,000 - $4,000
+- UI/UX Components: $4,000 - $5,000
+- Additional Features: $2,000 - $2,500
+
+**Assumptions:**
+
+- Hourly rate: $50-75/hour
+- Total hours: 560-720 hours
+- Includes: Development, basic testing, documentation
+
+#### Option 2: Hourly Rate
+
+**Rate:** $50-75/hour (depending on experience level)
+
+**Estimated Hours:** 560-720 hours
+
+**Total Range:** $28,000 - $54,000 USD
+
+### Ongoing Maintenance & Support
+
+**Monthly Maintenance:** $500 - $1,000/month
+
+- Bug fixes
+- Security updates
+- Minor feature enhancements
+- Technical support
+
+**Additional Services:**
+
+- New feature development: $75-100/hour
+- Major refactoring: $60-80/hour
+- Performance optimization: $60-80/hour
+- Comprehensive testing: $50-75/hour
+
+### Third-Party Service Costs (Client Responsibility)
+
+**Monthly Operating Costs:**
+
+- Supabase: $25-100/month (depending on usage)
+- Lovable AI: Variable (based on API usage)
+- ElevenLabs: Variable (based on voice usage)
+- Firebase: Variable (based on push notifications)
+- Domain & Hosting: $10-50/month
+
+**Estimated Monthly Operating Cost:** $50-300/month (depending on user base)
+
+### Payment Terms
+
+**Recommended Structure:**
+
+- 30% upfront (project initiation)
+- 40% at milestone completion (core features)
+- 30% upon final delivery and acceptance
+
+**Alternative:**
+
+- 50% upfront
+- 50% upon completion
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -1477,4 +1694,3 @@ If you need assistance:
 [Back to Top](#parenting-genie---ai-powered-parenting-assistant)
 
 </div>
-
