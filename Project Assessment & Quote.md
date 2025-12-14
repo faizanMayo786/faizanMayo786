@@ -16,7 +16,7 @@
 - [Pricing & Payment Milestones](#-pricing--payment-milestones)
 - [Timeline](#-timeline)
 - [Terms and Conditions](#-terms-and-conditions)
-- [Maintenance & Support](#-maintenance--support)
+- [Maintenance & Support (Post-Development)](#-maintenance--support)
 - [Future Enhancements](#-future-enhancements)
 - [Summary](#-summary)
 
