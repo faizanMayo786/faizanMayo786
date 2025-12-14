@@ -523,6 +523,25 @@ If the provider terminates the project early in milestone 1, the client will be 
    - Changes taking **less than 1 hour** are acceptable and included
    - Changes taking **more than 1 hour** will be discussed and estimated separately
 
+7. **Scope Creep Management**
+   - **Definition:** Scope creep refers to gradual expansion of project requirements beyond the original agreed scope
+   - **Policy:** All scope expansions must be formally approved before implementation
+   - **Process:**
+     - Client must submit scope change request in writing
+     - Provider will assess impact on timeline and cost within 3 business days
+     - Formal change order will be created with updated timeline and cost
+     - Work will only begin after change order is approved and signed
+   - **Examples of Scope Creep:**
+     - Adding new features not in original scope
+     - Changing requirements mid-development
+     - Expanding functionality beyond agreed specifications
+     - Adding integrations not originally discussed
+   - **Prevention:**
+     - Clear scope definition at project start
+     - Regular scope reviews during development
+     - Written approval required for any scope changes
+   - **Cost Impact:** Scope creep will be billed at $30/hour with separate estimate provided
+   
 ### Communication
 
 - **Progress Updates:** Weekly or bi-weekly progress transcripts
