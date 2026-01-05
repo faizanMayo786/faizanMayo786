@@ -1,374 +1,340 @@
 # Technical & Architecture Disclosure
 
-## Section 1: Supabase Usage & Data Access
+## Purpose
+
+This document aims to provide a clear and shared understanding of the system's architecture, technology choices, and operational setup.
+
+---
+
+## 1. Supabase Usage & Data Access
 
 ### 1.1 Database Communication
 
-**Question: How does the application communicate with Supabase?**
+**How does the application communicate with Supabase?**
 
-**Answer: Direct client-side access via Flutter SDK**
+- **A combination of both**:
+  - Direct client-side access via Flutter SDK (`supabase_flutter`) for most database operations
+  - Edge Functions for sensitive operations (OTP sending/verification, demo user creation)
 
-The application uses **direct client-side access** through the Supabase Flutter SDK (`supabase_flutter: ^2.10.3`). The Flutter app communicates directly with Supabase services without an intermediate custom backend API.
+**Which Supabase services are currently used and how?**
 
-**Implementation Details:**
+- ✅ **PostgreSQL database**: Direct queries via Flutter SDK (`Supabase.instance.client.from('table')`)
+- ✅ **Auth**: Supabase Auth for user sessions (`Supabase.instance.client.auth`)
+- ✅ **Realtime**: WebSocket subscriptions for chat messages and notifications (`StreamBuilder` with Realtime)
+- ✅ **Storage**: File storage for profile images (`profile-pictures` bucket) and driver documents (`driver-docs` bucket)
+- ✅ **Edge Functions**:
+  - `send-otp-whatsapp` - OTP delivery via WhatsApp
+  - `verify-otp` - OTP verification and user creation
+  - `create-demo-user` - Demo account creation
+  - `send-ride-reminders` - Scheduled notifications (via Cron)
 
-1. **Initialization** (in `lib/main.dart`):
+### 1.2 Security & Access Control
 
-   ```dart
-   await Supabase.initialize(
-     url: rawUrl,      // From .env: SUPABASE_URL
-     anonKey: rawAnonKey  // From .env: SUPABASE_ANON_KEY
-   );
-   ```
+**Is Row Level Security (RLS) enabled on all relevant tables?**
 
-2. **Service Layer Pattern**:
+- ❌ No, RLS is not enabled. Due to fast migration phase, RLS was avoided. Access control is handled at application level.
 
-   - All services access Supabase via singleton: `Supabase.instance.client`
-   - Services include: `AuthService`, `RideService`, `ChatService`, `UserService`, `NotificationService`, `ConfigService`
-   - Example: `final _supa = Supabase.instance.client;`
+**Are access policies reviewed and tested for each role?**
 
-3. **Direct Database Queries**:
+- N/A - RLS is not enabled. Access control is managed through application logic and Edge Functions.
 
-   - Services perform direct SQL queries using Supabase client methods:
-     - `.from('table_name').select()`
-     - `.from('table_name').insert()`
-     - `.from('table_name').update()`
-     - `.from('table_name').delete()`
+**Where is business logic and validation primarily handled?**
 
-4. **Edge Functions for Sensitive Operations**:
-   - OTP sending/verification: `/send-otp-whatsapp`, `/verify-otp`
-   - Demo user creation: `/create-demo-user`
-   - Admin user creation: `/create-admin-user`
-   - Ride reminders: `/send-ride-reminders` (scheduled via Supabase Cron)
-   - Edge Functions use Service Role Key (never exposed to client)
+- **Combination approach**:
+  - **Edge Functions**: Authentication (OTP), user creation, sensitive operations
+  - **Backend services**: Access control and data validation via Edge Functions
+  - **Frontend**: Input validation, UI state management, client-side checks
 
-**Architecture Pattern:**
+**Are Supabase service-role keys used anywhere in the system?**
 
-```
-Flutter App → Supabase Client SDK → Supabase Services
-                ↓
-        ┌───────┴────────┐
-        │                │
-   Direct DB Access   Edge Functions
-   (Anon Key)        (Service Role Key)
-```
+- ✅ Yes, service-role keys are used:
+  - **Where**: Edge Functions only (for OTP sending/verification, demo user creation)
+  - **Storage**: Stored in Edge Function environment variables (server-side only)
+  - **Security**: Never exposed in client-side code. Only used in Deno Edge Functions which run server-side
 
----
+### 1.3 Data Ownership & Portability
 
-### 1.2 Which Supabase Services Are Currently Used and How?
+**Who owns the Supabase project and its billing account?**
 
-**Answer: Multiple Supabase services are actively used:**
+- To be confirmed with project owner/client
 
-#### ✅ **PostgreSQL Database**
+**Can the database be accessed using standard PostgreSQL credentials?**
 
-- **Usage**: Primary data storage for all application data
-- **Tables Used**:
-  - `profiles` - User profiles (riders/drivers)
-  - `rides` - Ride offers created by drivers
-  - `bookings` - Seat bookings by passengers
-  - `chats` - Chat conversations
-  - `messages` - Chat messages (Base64 encoded)
-  - `driver_documents` - Driver verification documents
-  - `notifications` - In-app notifications
-  - `otps` - Temporary OTP codes (hashed)
-  - `device_tokens` - Push notification tokens
-  - `app_config` - Remote configuration
-  - `ratings` - Driver ratings
-  - `admin_users` - Admin panel users
-- **Access Pattern**: Direct queries via Supabase client with Anon Key
+- ✅ Yes, Supabase provides direct PostgreSQL connection. Connection string available in Supabase dashboard under Settings > Database.
 
-#### ✅ **Supabase Auth**
+**Are backups available outside of Supabase if needed?**
 
-- **Usage**: User authentication and session management
-- **Features Used**:
-  - Phone-based authentication (via Edge Functions)
-  - Email/password for admin panel
-  - Session token management
-  - User metadata storage
-- **Implementation**:
-  ```dart
-  final _supa = Supabase.instance.client;
-  User? get currentUser => _supa.auth.currentUser;
-  Stream<AuthState> get authStateChanges => _supa.auth.onAuthStateChange;
-  ```
-- **Auth Flow**: OTP sent via WhatsApp → Verified via Edge Function → Auth user created → Client signs in with credentials
+- Supabase provides automatic daily backups. Manual exports can be performed via Supabase dashboard or pg_dump using PostgreSQL connection string.
 
-#### ✅ **Supabase Realtime**
+**Are there any notable vendor dependencies beyond Supabase-managed services?**
 
-- **Usage**: Real-time data subscriptions for live updates
-- **Features Used**:
-  - Real-time notifications stream
-  - Chat message updates
-  - Configuration updates (via RealtimeChannel)
-- **Implementation Examples**:
-
-  ```dart
-  // Notifications stream
-  _db.from('notifications')
-     .stream(primaryKey: ['id'])
-     .map((rows) => ...)
-
-  // Config updates via RealtimeChannel
-  RealtimeChannel? _channel;
-  _channel = _supa.channel('app_config_changes')
-  ```
-
-#### ✅ **Supabase Storage**
-
-- **Usage**: File storage for images and documents
-- **Buckets Used**:
-  - `profile-pictures` - User profile avatars
-  - `driver-docs` - Driver verification documents (ID, license, vehicle registration)
-  - `chat-images` - Chat message images
-- **Implementation**:
-  ```dart
-  _db.storage
-    .from('profile-pictures')
-    .upload(objectPath, file, fileOptions: FileOptions(...))
-  ```
-- **Image Compression**: Images compressed to max 1MB before upload
-
-#### ✅ **Supabase Edge Functions**
-
-- **Usage**: Serverless backend logic for sensitive operations
-- **Functions Deployed**:
-
-  1. **`send-otp-whatsapp`**: Sends OTP via WhatsApp API
-
-     - Hashes OTP with SHA-256
-     - Stores hash in `otps` table
-     - Rate limiting (60-second cooldown)
-
-  2. **`verify-otp`**: Verifies OTP and creates/authenticates user
-
-     - Verifies OTP hash
-     - Creates Supabase Auth user if not exists
-     - Creates/updates profile
-     - Returns credentials for client sign-in
-
-  3. **`create-demo-user`**: Creates demo accounts for testing
-
-     - Creates Auth user and profile
-     - Pre-configured credentials
-
-  4. **`create-admin-user`**: Creates admin panel users
-
-  5. **`send-ride-reminders`**: Scheduled notifications (via Supabase Cron)
-     - Queries upcoming rides
-     - Sends push notifications
-
-- **Authentication**: All Edge Functions use Service Role Key (bypasses RLS)
-- **Runtime**: Deno (TypeScript)
+- No major vendor lock-in. Database is standard PostgreSQL and can be migrated. Edge Functions use Deno (standard runtime).
 
 ---
 
-### 1.3 Security & Access Control
+## 2. Backend Architecture
 
-#### **Question: Is Row Level Security (RLS) enabled on all relevant tables?**
+### 2.1 Backend Layer
 
-**Answer: RLS is mentioned in documentation but actual policies are not visible in codebase**
+**Is there a dedicated backend layer?**
 
-**Current Status:**
+- **No** - No traditional backend server. Architecture uses:
+  - Supabase Edge Functions (Deno/TypeScript) for serverless backend logic
+  - Direct client-to-database access via Flutter SDK
 
-- README.md mentions RLS should be configured
-- Example RLS policy provided in README for admin access:
-  ```sql
-  CREATE POLICY "Admins can read all profiles"
-  ON profiles FOR SELECT
-  TO authenticated
-  USING (
-    EXISTS (
-      SELECT 1 FROM admin_users
-      WHERE admin_users.id = auth.uid()
-      AND admin_users.is_active = true
-    )
-  );
-  ```
-- **However**, no actual RLS policy files found in the codebase
-- The codebase contains `firestore.rules` (Firebase Firestore rules) but this is a Supabase project, so these rules are likely legacy/unused
+**Where is the core business logic implemented?**
 
-**Recommendation:**
+- **Supabase Edge Functions**: Authentication, OTP handling, user creation
+- **Flutter application**: Ride management, booking logic, chat, notifications
+- **Database**: Data storage and relationships
 
-- RLS policies should be reviewed and verified in Supabase Dashboard
-- All tables should have appropriate RLS policies enabled
-- Policies should enforce:
-  - Users can only access their own data
-  - Drivers can manage their own rides
-  - Passengers can view available rides
-  - Chat participants can only access their conversations
-  - Admin users have elevated permissions
+**Any known trade-offs or limitations of this setup?**
+
+- **Trade-offs**:
+  - No RLS means access control must be handled in application code
+  - Edge Functions have execution time limits
+  - Direct database access requires careful input validation
+- **Benefits**:
+  - Faster development and deployment
+  - Lower infrastructure costs
+  - Scalable serverless architecture
 
 ---
 
-#### **Question: Are access policies reviewed and tested for each role?**
+## 3. Mobile Application (Flutter)
 
-**Answer: Cannot confirm from codebase - requires Supabase Dashboard review**
+### 3.1 Environments
 
-**Current State:**
+**Are separate environments in place?**
 
-- No test files found for RLS policies
-- No documentation of role-based access testing
-- README mentions RLS but doesn't provide comprehensive policy documentation
+- **Development**: Yes (local development)
+- **Staging**: Not explicitly configured (can use different Supabase projects)
+- **Production**: Yes (production Supabase project)
 
-**Roles in System:**
+**How is environment configuration handled within the app?**
 
-1. **Rider** (`role: 'rider'` in profiles table)
-2. **Driver** (`role: 'driver'` in profiles table)
-3. **Admin** (in `admin_users` table with roles: `super_admin`, `admin`, `moderator`)
+- Environment variables loaded from `.env` file using `flutter_dotenv` package
+- Variables: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `PUSHY_API_KEY`, `GOOGLE_MAPS_API_KEY`
+- `.env` file is gitignored, `.env.example` provided as template
 
-**Recommended Testing:**
+### 3.2 Secrets & Configuration
 
-- Test RLS policies for each role
-- Verify users cannot access other users' data
-- Verify drivers can only manage their own rides
-- Verify admins have appropriate access
-- Test edge cases (blocked users, inactive accounts)
+**How are API keys and sensitive configuration values managed?**
 
----
+- Stored in `.env` file (gitignored)
+- Loaded at runtime via `flutter_dotenv`
+- Some keys (Google Maps API key) are embedded in `AndroidManifest.xml` and `Info.plist` for platform-specific requirements
 
-#### **Question: Where is business logic and validation primarily handled?**
+**Are any secrets embedded in the mobile application?**
 
-**Answer: Combination of Backend Services (Edge Functions) and Client-side Services**
+- ⚠️ Yes, some API keys are embedded:
+  - Google Maps API key in `AndroidManifest.xml` and iOS configuration
+  - Supabase Anon Key (public, safe to expose)
+  - Pushy API key in `.env` (not in compiled app if using `.env`)
 
-#### **1. Backend Services (Edge Functions) - Primary for Sensitive Operations**
+**How are keys updated or rotated when needed?**
 
-**Location**: Supabase Edge Functions (Deno/TypeScript)
-
-**Handles:**
-
-- ✅ **OTP Generation & Verification**
-  - OTP hashing (SHA-256 with phone-specific salt)
-  - OTP expiration (5 minutes)
-  - Rate limiting (60-second cooldown)
-  - Failed attempt tracking
-- ✅ **User Authentication**
-  - Auth user creation/update
-  - Profile creation/update
-  - Session management
-- ✅ **WhatsApp Integration**
-  - OTP delivery via WhatsApp API
-  - Multi-language message support
-- ✅ **Scheduled Tasks**
-  - Ride reminder notifications (via Supabase Cron)
-
-**Why Backend:**
-
-- Security: Service Role Key never exposed to client
-- Sensitive operations: OTP hashing, user creation
-- External API calls: WhatsApp integration
+- Update `.env` file and rebuild app
+- For production: Update keys in Supabase dashboard, then update `.env` and redeploy
+- Google Maps key: Update in platform-specific config files and rebuild
 
 ---
 
-#### **2. Client-side Services (Flutter) - Primary for Business Logic**
+## 4. Admin / Dashboard Application
 
-**Location**: `lib/services/` directory
+### 4.1 Frontend
 
-**Services:**
+**Technology used:**
 
-- `AuthService` - Authentication flow, OTP requests
-- `RideService` - Ride search, booking, creation, status management
-- `ChatService` - Messaging, image upload, message encryption (Base64)
-- `UserService` - Profile management, document upload
-- `NotificationService` - Push notifications, notification management
-- `ConfigService` - Remote configuration fetching
-- `RatingService` - Driver rating submission
-- `ReportService` - User reporting functionality
+- **Next.js 14.2.16** (React framework with SSR/SSG)
+- **React 18.3.1** (UI library)
+- **TypeScript 5.x** (Type-safe JavaScript)
+- **Tailwind CSS 3.4.17** (Styling)
+- **Radix UI** (Component library)
+- **Recharts** (Charts)
 
-**Handles:**
+**Hosting provider:**
 
-- ✅ **Data Validation**
-  - Input validation (phone numbers, dates, prices)
-  - Business rules (seat capacity, ride status transitions)
-  - User permission checks
-- ✅ **Business Logic**
-  - Ride search with filters
-  - Booking workflow (request → approval → confirmation)
-  - Chat message encryption/decryption
-  - Image compression before upload
-  - Rating calculations
-  - Notification translation application
-- ✅ **State Management**
-  - User session management
-  - Cache management (user details cache)
-  - Real-time subscriptions
+- Not specified in codebase (typically Vercel/Netlify for Next.js apps)
 
-**Example Validation in Client:**
+**Authentication and authorization approach:**
 
-```dart
-// RideService - Seat booking validation
-if (seats <= 0 || seats > availableSeats) {
-  throw Exception('Invalid seat count');
-}
+- Supabase Auth with email/password
+- Role-based access via `admin_users` table (`super_admin`, `admin`, `moderator`)
+- Auth guard middleware for protected routes
 
-// RatingService - Rating validation
-if (stars < 1 || stars > 5) {
-  throw ArgumentError('Stars must be between 1 and 5');
-}
-```
+### 4.2 Backend & Permissions
+
+**Does it connect directly to Supabase or through a custom API?**
+
+- ✅ Direct connection to Supabase via Supabase Client SDK
+
+**How do admin permissions differ from standard user permissions?**
+
+- Admins have elevated access via `admin_users` table check
+- Can view all users, rides, bookings, chats
+- Can block/unblock users, approve/reject driver verifications
+- Can access analytics and system configuration
+
+**Is there logging or traceability for admin actions?**
+
+- Admin actions are logged in database (blocking logs, verification reviews)
+- Specific logging implementation details in `btareqi-admin/README.md`
 
 ---
 
-#### **3. Database (Constraints, Triggers) - Limited**
+## 5. Third-Party Services
 
-**Current State:**
+| Service Name        | Purpose                                           | Environment | Pricing Model | Monthly Cost | Billing Owner |
+| ------------------- | ------------------------------------------------- | ----------- | ------------- | ------------ | ------------- |
+| **Supabase**        | Database, Auth, Realtime, Storage, Edge Functions | Production  | Usage-based   | TBD          | TBD           |
+| **Google Maps API** | Maps, Geocoding, Places                           | Production  | Pay-as-you-go | TBD          | TBD           |
+| **Pushy SDK**       | Push Notifications (iOS/Android)                  | Production  | Subscription  | TBD          | TBD           |
+| **WhatsApp API**    | OTP Delivery                                      | Production  | Per-message   | TBD          | TBD           |
 
-- No SQL migration files found in codebase
-- No database trigger definitions visible
-- README mentions database schema but not constraints/triggers
-
-**Potential Database-Level Logic:**
-
-- Foreign key constraints (enforced by Supabase)
-- Unique constraints (e.g., phone numbers in profiles)
-- Timestamp defaults (`created_at`, `updated_at`)
-- **Note**: Business logic validation should ideally be in database triggers, but this is not visible in codebase
+**Note**: Exact pricing and billing account owners to be confirmed with project owner.
 
 ---
 
-### Summary: Business Logic Distribution
+## 6. Infrastructure & Deployment
 
-| Layer               | Primary Responsibilities                    | Examples                                      |
-| ------------------- | ------------------------------------------- | --------------------------------------------- |
-| **Edge Functions**  | Sensitive operations, external APIs         | OTP hashing, WhatsApp delivery, user creation |
-| **Client Services** | Business logic, validation, data operations | Ride booking, chat messaging, profile updates |
-| **Database**        | Data integrity, relationships               | Foreign keys, unique constraints, timestamps  |
-| **Frontend (UI)**   | User input validation, UX                   | Form validation, error messages               |
+**Hosting providers used:**
+
+- **Supabase**: Database, Auth, Storage, Edge Functions
+- **Mobile Apps**: App Store (iOS), Play Store (Android)
+- **Admin Panel**: Not specified (typically Vercel/Netlify)
+
+**Regions in use:**
+
+- To be confirmed (Supabase project region)
+
+**Available environments:**
+
+- Development (local)
+- Production (Supabase production project)
+
+### 6.1 Backups & Disaster Recovery
+
+**Database backup approach:**
+
+- Supabase automatic daily backups
+- Manual exports available via dashboard
+
+**Storage backup approach:**
+
+- Supabase Storage backups included in daily backups
+
+**Backup frequency and retention period:**
+
+- Daily automatic backups (Supabase default)
+- Retention period: To be confirmed in Supabase settings
+
+**Restore or recovery testing process:**
+
+- Manual restore available via Supabase dashboard
+- No automated testing process documented
+
+### 6.2 Monitoring & Logging
+
+**Monitoring tools in place:**
+
+- Supabase Dashboard (built-in monitoring)
+- Edge Function logs available in Supabase dashboard
+
+**Logging strategy:**
+
+- Application logs: Console/debug logs in Flutter app
+- Edge Function logs: Available in Supabase dashboard
+- Database logs: Supabase built-in logging
+
+**Alerting setup:**
+
+- Not explicitly configured (Supabase provides default alerts)
+
+**Incident or issue response process:**
+
+- Standard issue tracking and resolution process
+- Detailed troubleshooting guide in `README.md`
 
 ---
 
-## Recommendations
+## 7. App Store & Play Store Readiness
 
-### 1. RLS Policy Review
+### 7.1 Publishing Accounts
 
-- ✅ Audit all tables in Supabase Dashboard
-- ✅ Verify RLS is enabled on all tables
-- ✅ Review and document all RLS policies
-- ✅ Test policies for each role (rider, driver, admin)
-- ✅ Document policy testing procedures
+**Apple App Store account owner:**
 
-### 2. Business Logic Audit
+- To be confirmed with project owner
 
-- ✅ Review client-side validation for security
-- ✅ Consider moving critical validation to database triggers
-- ✅ Document all business rules
-- ✅ Add validation tests
+**Google Play Console account owner:**
 
-### 3. Security Hardening
+- To be confirmed with project owner
 
-- ✅ Ensure Service Role Key is never exposed
-- ✅ Review all direct database queries for SQL injection risks
-- ✅ Verify input sanitization
-- ✅ Review message encryption (currently Base64 - consider AES)
+**Access level currently granted to the client:**
 
-### 4. Documentation
+- To be confirmed with project owner
 
-- ✅ Document all RLS policies
-- ✅ Document database constraints and triggers
-- ✅ Create architecture diagrams showing data flow
-- ✅ Document role-based access patterns
+### 7.2 Release Process
+
+**Rollback approach:**
+
+- App Store: Previous version can be re-promoted
+- Play Store: Staged rollouts allow gradual release and rollback
+
+**Versioning strategy:**
+
+- Semantic versioning: `MAJOR.MINOR.PATCH+BUILD_NUMBER`
+- Current version: `1.0.1+6`
+- Version stored in `pubspec.yaml`
 
 ---
 
-**Document Generated**: Based on codebase analysis  
-**Last Updated**: Current date  
-**Codebase Version**: 1.0.1+6
+## 8. Source Code & Repository Access
+
+**Repository information:**
+
+- **Mobile App Repository**:
+
+  - URL: To be provided by project owner
+  - Platform: GitHub/GitLab/Bitbucket (to be confirmed)
+  - Access level: To be granted by owner
+  - Branching strategy: Standard Git workflow (main/develop branches)
+
+- **Admin Panel Repository**:
+  - Location: `btareqi-admin/` directory in main repository
+  - Same repository as mobile app
+  - Access level: Same as main repository
+
+**Protected branches or special rules:**
+
+- To be confirmed with repository settings
+
+---
+
+## 9. Documentation
+
+**Available documentation:**
+
+- ✅ **Architecture diagrams**: Available in `README.md` (Mermaid diagrams)
+- ✅ **Database schema**: Available in `README.md` (Section: Database Schema)
+- ✅ **API documentation**: Edge Functions documented in `README.md` (Section: Supabase Edge Functions)
+- ✅ **Environment variables**: Listed in `README.md` and `.env.example` files
+- ✅ **Admin access steps**: Documented in `btareqi-admin/README.md`
+
+**Detailed documentation locations:**
+
+- **Main README**: `/README.md` (2574 lines) - Complete Flutter app documentation
+- **Admin Panel README**: `/btareqi-admin/README.md` (1592 lines) - Complete admin panel documentation
+
+**Operational notes or runbooks:**
+
+- Troubleshooting guides in both README files
+- Build & deployment instructions documented
+- Setup & installation guides included
+
+---
+
+**Note**: For detailed technical documentation, architecture diagrams, database schemas, API specifications, and operational procedures, please refer to the comprehensive README.md files in the codebase:
+
+- Main application: `README.md` (2574 lines)
+- Admin panel: `btareqi-admin/README.md` (1592 lines)
