@@ -56,7 +56,7 @@ This document aims to provide a clear and shared understanding of the system's a
 
 **Who owns the Supabase project and its billing account?**
 
-- To be confirmed with project owner/client
+- Moaz Arishe - Client
 
 **Can the database be accessed using standard PostgreSQL credentials?**
 
@@ -107,9 +107,7 @@ This document aims to provide a clear and shared understanding of the system's a
 
 **Are separate environments in place?**
 
-- **Development**: Yes (local development)
-- **Staging**: Not explicitly configured (can use different Supabase projects)
-- **Production**: Yes (production Supabase project)
+No
 
 **How is environment configuration handled within the app?**
 
@@ -155,7 +153,7 @@ This document aims to provide a clear and shared understanding of the system's a
 
 **Hosting provider:**
 
-- Not specified in codebase (typically Vercel/Netlify for Next.js apps)
+- Vercel
 
 **Authentication and authorization approach:**
 
@@ -185,12 +183,12 @@ This document aims to provide a clear and shared understanding of the system's a
 
 ## 5. Third-Party Services
 
-| Service Name        | Purpose                                           | Environment | Pricing Model | Monthly Cost | Billing Owner |
-| ------------------- | ------------------------------------------------- | ----------- | ------------- | ------------ | ------------- |
-| **Supabase**        | Database, Auth, Realtime, Storage, Edge Functions | Production  | Usage-based   | TBD          | TBD           |
-| **Google Maps API** | Maps, Geocoding, Places                           | Production  | Pay-as-you-go | TBD          | TBD           |
-| **Pushy SDK**       | Push Notifications (iOS/Android)                  | Production  | Subscription  | TBD          | TBD           |
-| **WhatsApp API**    | OTP Delivery                                      | Production  | Per-message   | TBD          | TBD           |
+| Service Name        | Purpose                                           | Environment | Pricing Model |
+| ------------------- | ------------------------------------------------- | ----------- | ------------- |
+| **Supabase**        | Database, Auth, Realtime, Storage, Edge Functions | Production  | Usage-based   |
+| **Google Maps API** | Geocoding, Places                                 | Production  | Pay-as-you-go |
+| **Pushy SDK**       | Push Notifications (iOS/Android)                  | Production  | Subscription  |
+| **WhatsApp API**    | OTP Delivery                                      | Production  | Per-message   |
 
 **Note**: Exact pricing and billing account owners to be confirmed with project owner.
 
@@ -202,39 +200,7 @@ This document aims to provide a clear and shared understanding of the system's a
 
 - **Supabase**: Database, Auth, Storage, Edge Functions
 - **Mobile Apps**: App Store (iOS), Play Store (Android)
-- **Admin Panel**: Not specified (typically Vercel/Netlify)
-
-**Regions in use:**
-
-- To be confirmed (Supabase project region)
-
-**Available environments:**
-
-- Development (local)
-- Production (Supabase production project)
-
-### 6.1 Backups & Disaster Recovery
-
-**Database backup approach:**
-
-- Supabase automatic daily backups
-- Manual exports available via dashboard
-
-**Storage backup approach:**
-
-- Supabase Storage backups included in daily backups
-
-**Backup frequency and retention period:**
-
-- Daily automatic backups (Supabase default)
-- Retention period: To be confirmed in Supabase settings
-
-**Restore or recovery testing process:**
-
-- Manual restore available via Supabase dashboard
-- No automated testing process documented
-
-### 6.2 Monitoring & Logging
+- **Admin Panel**: Vercel
 
 **Monitoring tools in place:**
 
@@ -247,15 +213,6 @@ This document aims to provide a clear and shared understanding of the system's a
 - Edge Function logs: Available in Supabase dashboard
 - Database logs: Supabase built-in logging
 
-**Alerting setup:**
-
-- Not explicitly configured (Supabase provides default alerts)
-
-**Incident or issue response process:**
-
-- Standard issue tracking and resolution process
-- Detailed troubleshooting guide in `README.md`
-
 ---
 
 ## 7. App Store & Play Store Readiness
@@ -264,22 +221,17 @@ This document aims to provide a clear and shared understanding of the system's a
 
 **Apple App Store account owner:**
 
-- To be confirmed with project owner
+- Moaz Arishe
 
 **Google Play Console account owner:**
 
-- To be confirmed with project owner
+- Moaz Arishe
 
 **Access level currently granted to the client:**
 
-- To be confirmed with project owner
+- Owner
 
 ### 7.2 Release Process
-
-**Rollback approach:**
-
-- App Store: Previous version can be re-promoted
-- Play Store: Staged rollouts allow gradual release and rollback
 
 **Versioning strategy:**
 
@@ -294,20 +246,12 @@ This document aims to provide a clear and shared understanding of the system's a
 **Repository information:**
 
 - **Mobile App Repository**:
-
-  - URL: To be provided by project owner
-  - Platform: GitHub/GitLab/Bitbucket (to be confirmed)
-  - Access level: To be granted by owner
-  - Branching strategy: Standard Git workflow (main/develop branches)
+  - Platform: GitHub
+  - Access level: Moaz Arishe & Faizan Elahi (Reckap Solutions - Co Founder)
 
 - **Admin Panel Repository**:
-  - Location: `btareqi-admin/` directory in main repository
   - Same repository as mobile app
   - Access level: Same as main repository
-
-**Protected branches or special rules:**
-
-- To be confirmed with repository settings
 
 ---
 
