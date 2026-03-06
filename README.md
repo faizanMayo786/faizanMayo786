@@ -48,7 +48,7 @@
 <td align="center" width="20%">
 <img src="https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif" width="60"/>
 <br/>
-<h3>5+</h3>
+<h3>6+</h3>
 <sub>Years Experience</sub>
 </td>
 <td align="center" width="20%">
