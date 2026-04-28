@@ -1,14 +1,13 @@
 # Datasets for Deep Learning-Based Student Grade Prediction System
-## Muhammad Asif Riaz — F22BDATS1M02032 — IUB
 
----
+
 
 ## Overview
 
 This project uses **3 real, publicly available, peer-reviewed datasets** from established
 educational data mining repositories. All datasets are licensed under CC BY 4.0.
 
----
+
 
 ## Local dataset naming
 
