@@ -24,7 +24,7 @@
 
 <!-- Snake-like Typing Animation -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=32&duration=3000&pause=1000&color=4A90E2&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=170&lines=Hi+%F0%9F%91%8B+I'm+Faizan+Mayo+-+CTO+%26+Co-Founder;%F0%9F%9A%80+Building+AI-Powered+Products+That+Scale;%F0%9F%92%BB+5%2B+Years+%7C+100%2B+Projects+%7C+50K%2B+Users;%E2%9C%A8+Transforming+Ideas+Into+Digital+Reality" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=32&duration=3000&pause=1000&color=4A90E2&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=170&lines=Hi+%F0%9F%91%8B+I'm+Faizan+Mayo+-+CTO+%26+Founder;%F0%9F%9A%80+Building+AI-Powered+Products+That+Scale;%F0%9F%92%BB+5%2B+Years+%7C+100%2B+Projects+%7C+50K%2B+Users;%E2%9C%A8+Transforming+Ideas+Into+Digital+Reality" alt="Typing SVG" />
 </a>
 
 </div>
